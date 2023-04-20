@@ -11,6 +11,7 @@ function NotepadLandingPage() {
     const Dispatch = useDispatch();
 // State Variables 
     let [newDateAdded, setNewDateAdded] = useState('');
+    let [newDescription, setNewDescription] = useState('');
   return (
     <>
     <div className="notepadIntro">
@@ -23,7 +24,7 @@ function NotepadLandingPage() {
     </div>
     <div className="formContainer">
         <h3> Start an Entry:</h3>
-    <div className= "dateInput">
+    <div className= "entryInput">
           <label> Enter The Date Here 
           <input
             required
@@ -33,6 +34,18 @@ function NotepadLandingPage() {
             value={newDateAdded}
             onChange={(e) => {
               setNewDateAdded(e.target.value);
+            }}
+          />
+          </label>
+          </div>
+          <div className="InputAndBtn">
+          <label> What is it that You Cannot Forget?
+            <input
+            id="descriptionText"
+            placeholder="Your Thoughts Here"
+            value={newDescription}
+            onChange={(e) => {
+              setNewDescription(e.target.value);
             }}
           />
           </label>
