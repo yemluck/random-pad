@@ -12,6 +12,8 @@ function NotepadLandingPage() {
 // State Variables 
     let [newDateAdded, setNewDateAdded] = useState('');
     let [newDescription, setNewDescription] = useState('');
+    let [header, setHeader] = useState('');
+
   return (
     <>
     <div className="notepadIntro">
@@ -39,6 +41,19 @@ function NotepadLandingPage() {
           </label>
           </div>
           <div className="InputAndBtn">
+          <label> Set a Header for the Entry:
+            <input
+            id="headerText"
+            placeholder="Note Header"
+            value={header}
+            onChange={(e) => {
+              setHeader(e.target.value);
+            }}
+          />
+          </label>
+          </div>
+
+          <div className="InputAndBtn">
           <label> What is it that You Cannot Forget?
             <input
             id="descriptionText"
@@ -50,6 +65,14 @@ function NotepadLandingPage() {
           />
           </label>
           </div>
+          {/* Submit button will need onClick function to send the state variables to the reducer saga */}
+        <button className="formSubmitBtn"  >
+            <h2> Submit</h2>
+        </button>
+        {/* Clear entry button will need onClick function that clears useState variables */}
+        <button className="formSubmitBtn"  >
+            <h2> Clear Entry</h2>
+        </button>
     </div>
     </>
   );
