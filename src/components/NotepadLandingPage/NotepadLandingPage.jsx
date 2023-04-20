@@ -76,7 +76,7 @@ function NotepadLandingPage() {
         <button className="formSubmitBtn"  >
             <h2> Submit</h2>
         </button>
-        {/* Clear entry button will need onClick function that clears useState variables */}
+        {/* Clear entry button has onClick function that clears the useState variables */}
         <button className="formSubmitBtn" onClick={handleClear} >
             <h2> Clear Entry</h2>
         </button>
