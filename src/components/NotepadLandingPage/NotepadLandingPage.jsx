@@ -14,6 +14,13 @@ function NotepadLandingPage() {
     let [newDescription, setNewDescription] = useState('');
     let [header, setHeader] = useState('');
 
+// Button Functions 
+    // function to clear inputs after client has entered data
+    function handleClear(){
+        setNewDateAdded('');
+        setNewDescription('');
+        setHeader('');
+    }
   return (
     <>
     <div className="notepadIntro">
@@ -70,7 +77,7 @@ function NotepadLandingPage() {
             <h2> Submit</h2>
         </button>
         {/* Clear entry button will need onClick function that clears useState variables */}
-        <button className="formSubmitBtn"  >
+        <button className="formSubmitBtn" onClick={handleClear} >
             <h2> Clear Entry</h2>
         </button>
     </div>
