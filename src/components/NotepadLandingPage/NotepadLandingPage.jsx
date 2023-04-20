@@ -13,8 +13,17 @@ function NotepadLandingPage() {
     let [newDateAdded, setNewDateAdded] = useState('');
   return (
     <>
-    <div className="container">
-    <div className= "InputAndBtn">
+    <div className="notepadIntro">
+    <h1> Notepad </h1>
+    <h2> The space for your thoughts has been awaiting your magic</h2>
+    <img 
+            src= "https://awaypoint.files.wordpress.com/2018/10/power-of-the-mind-singularity-0-poster-magic.jpg"            width= {600}
+            height={450}
+        />
+    </div>
+    <div className="formContainer">
+        <h3> Start an Entry:</h3>
+    <div className= "dateInput">
           <label> Enter The Date Here 
           <input
             required
