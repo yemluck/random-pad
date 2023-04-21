@@ -31,8 +31,7 @@ function UserPage() {
       go back to the homepage
       BTW, where is the CSS you used to style the button? I couldn't find it
       */}
-      <button className="notepadBtn" onClick={goToNotepad} ><h1> Notepad Homepage</h1></button>
-      <Link to="/notepad"><button className="notepadBtn2">Notepad Homepage2</button></Link>
+      <Link to="/notepad"><button className="notepadBtn"> <h1>Notepad Homepage</h1></button></Link>
       </div> 
 
       <LogOutButton className="btn" />
