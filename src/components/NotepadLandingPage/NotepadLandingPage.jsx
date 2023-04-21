@@ -27,7 +27,8 @@ function NotepadLandingPage() {
     <h1> Notepad </h1>
     <h2> The space for your thoughts has been awaiting your magic</h2>
     <img 
-            src= "https://awaypoint.files.wordpress.com/2018/10/power-of-the-mind-singularity-0-poster-magic.jpg"            width= {600}
+            src= "https://awaypoint.files.wordpress.com/2018/10/power-of-the-mind-singularity-0-poster-magic.jpg"           
+            width= {600}
             height={450}
         />
     </div>
