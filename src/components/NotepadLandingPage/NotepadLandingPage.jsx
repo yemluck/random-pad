@@ -30,6 +30,7 @@ function NotepadLandingPage() {
             src= "https://awaypoint.files.wordpress.com/2018/10/power-of-the-mind-singularity-0-poster-magic.jpg"           
             width= {600}
             height={450}
+            alt= "picture of your brain not loading"
         />
     </div>
     <div className="formContainer">
