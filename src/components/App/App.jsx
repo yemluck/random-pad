@@ -19,7 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-
+import NotepadLandingPage from '../NotepadLandingPage/NotepadLandingPage';
 import './App.css';
 
 function App() {
@@ -66,6 +66,12 @@ function App() {
             path="/info"
           >
             <InfoPage />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/Notepad"
+          >
+            <NotepadLandingPage />
           </ProtectedRoute>
 
           <Route

@@ -1,0 +1,14 @@
+.notepadNavigation{
+  border: 1px solid black;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  background-color: rgb(189, 220, 233);
+}
+
+.notepadBtn{
+    margin: 25px;
+}
