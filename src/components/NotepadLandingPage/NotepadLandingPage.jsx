@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import './NotepadLandingPage.css';
 
@@ -83,6 +83,9 @@ function NotepadLandingPage() {
             <h2> Clear Entry</h2>
         </button>
     </div>
+    {/* button styling is handled in the userPage.css  */}
+    <Link to="/user"><button className="notepadBtn"> <h2>User Homepage</h2></button></Link>
+
     </>
   );
 }
