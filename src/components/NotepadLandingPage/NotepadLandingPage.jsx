@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import './NotepadLandingPage.css';
@@ -8,6 +8,9 @@ function NotepadLandingPage() {
 
  // Hooks 
     const dispatch = useDispatch();
+// Reducers 
+    const noteEntries = useSelector(store => store.notepadReducer);
+
 // State Variables 
     let [newDateAdded, setNewDateAdded] = useState('');
     let [description, setDescription] = useState('');
@@ -21,6 +24,12 @@ let noteToAdd =
     description: description
 }
     
+// Page Load Functions:
+    useEffect(()=> {
+        dispatch({
+        type: 'FETCH_NOTES'
+        });
+    }, [])
 
 // Button Functions 
     // function to send noteToAdd to saga 
@@ -40,6 +49,7 @@ let noteToAdd =
         setDescription('');
         setHeader('');
     }
+
 
   return (
     <>

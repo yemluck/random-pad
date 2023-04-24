@@ -8,7 +8,7 @@ const notepadReducer = (state=[], action) => {
         default:
             return state;
     }
-  }; // End resultsList reducer
+  }; // End notepad reducer
 
 
 
