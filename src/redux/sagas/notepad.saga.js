@@ -1,6 +1,7 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
+//POST to send user entries into database
 function* addNoteToNotepad(action){
     try{
         yield axios.post('/user/notes', action.payload)
@@ -10,10 +11,21 @@ function* addNoteToNotepad(action){
     }
 
 }
+//GET request to retrieve user entries from notepad
+function* fetchNotes(){
+    let response = yield axios.get('/notes');
+   
+    yield put({
+        type: 'SET_NOTES',
+        payload: response.data
+    })
+}
 
 // route is /client/birds
+
 function* addNoteToSaga(){
     yield takeEvery('ADD_NOTE_TO_NOTEPAD', addNoteToNotepad);
+    yield takeEvery('FETCH_NOTES', fetchNotes);
 }
 
 export default addNoteToSaga;
