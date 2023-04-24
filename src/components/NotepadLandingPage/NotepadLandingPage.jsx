@@ -116,13 +116,25 @@ let noteToAdd =
 
 {/* Div to store previous notepad entries */}
     <div class="notesHistory">
-                
-    </div>
+        <div key={noteEntry.id}>
+    {noteEntry.map(note => {
+            return(
+              <div key={note.id}>
+              <div>
+                  <h3>{note.date}</h3>
+                  <h1>{note.header}</h1>
+                  <h3>{note.description}</h3>
+              </div>
+            </div>
+            )
+            })}
+  </div>
+
     {/* button styling is handled in the userPage.css  */}
     <Link to="/user"><button className="notepadBtn"> <h2>User Homepage</h2></button></Link>
-
+</div>
     </>
-  );
+  )
 }
 
 export default NotepadLandingPage;
