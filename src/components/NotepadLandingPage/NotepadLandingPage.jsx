@@ -9,7 +9,7 @@ function NotepadLandingPage() {
  // Hooks 
     const dispatch = useDispatch();
 // Reducers 
-    const noteEntries = useSelector(store => store.notepadReducer);
+    const noteEntry = useSelector(store => store.notepadReducer);
 
 // State Variables 
     let [newDateAdded, setNewDateAdded] = useState('');
@@ -112,6 +112,11 @@ let noteToAdd =
         <button className="formSubmitBtn" onClick={handleClear} >
             <h2> Clear Entry</h2>
         </button>
+    </div>
+
+{/* Div to store previous notepad entries */}
+    <div class="notesHistory">
+                
     </div>
     {/* button styling is handled in the userPage.css  */}
     <Link to="/user"><button className="notepadBtn"> <h2>User Homepage</h2></button></Link>
