@@ -7,20 +7,40 @@ import './NotepadLandingPage.css';
 function NotepadLandingPage() {
 
  // Hooks 
-    const history = useHistory();
-    const Dispatch = useDispatch();
+    const dispatch = useDispatch();
 // State Variables 
     let [newDateAdded, setNewDateAdded] = useState('');
-    let [newDescription, setNewDescription] = useState('');
+    let [description, setDescription] = useState('');
     let [header, setHeader] = useState('');
 
+// Create notepad and descriptions, send to reducer via dispatch
+let noteToAdd = 
+{
+    date: newDateAdded,
+    header: header,
+    description: description
+}
+    
+
 // Button Functions 
+    // function to send noteToAdd to saga 
+    function addNoteToNotepad(event){
+        event.preventDefault();
+        dispatch({
+            type: 'ADD_NOTE_TO_NOTEPAD',
+            payload: noteToAdd
+        })
+        console.log('your note has been sent');
+    }
+
+
     // function to clear inputs after client has entered data
     function handleClear(){
         setNewDateAdded('');
-        setNewDescription('');
+        setDescription('');
         setHeader('');
     }
+
   return (
     <>
     <div className="notepadIntro">
@@ -67,15 +87,15 @@ function NotepadLandingPage() {
             <input
             id="descriptionText"
             placeholder="Your Thoughts Here"
-            value={newDescription}
+            value={description}
             onChange={(e) => {
-              setNewDescription(e.target.value);
+              setDescription(e.target.value);
             }}
           />
           </label>
           </div>
           {/* Submit button will need onClick function to send the state variables to the reducer saga */}
-        <button className="formSubmitBtn"  >
+        <button className="formSubmitBtn" onClick={addNoteToNotepad} >
             <h2> Submit</h2>
         </button>
         {/* Clear entry button has onClick function that clears the useState variables */}
