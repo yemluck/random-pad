@@ -37,11 +37,12 @@ router.post('/notes', rejectUnauthenticated, (req, res) => {
     });
       
 //get request to retrieve notepad entries and display on notepad homepage
-    router.get('/', rejectUnauthenticated, (req, res) => {
+    router.get('/notes', rejectUnauthenticated, (req, res) => {
         const queryText = 
                             `SELECT 
                             "date",
-                            "header", "description",
+                            "header", 
+                            "description",
                             FROM notepad 
                             `
         const queryParams= [req.user.id]
