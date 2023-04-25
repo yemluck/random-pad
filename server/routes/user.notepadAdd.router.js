@@ -7,6 +7,7 @@ const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
+//Post request to save user entries from notepad into database
 router.post('/notes', rejectUnauthenticated, (req, res) => {
       console.log('req.booty is ', req.body)
             const insertNoteQuery = `
@@ -35,6 +36,28 @@ router.post('/notes', rejectUnauthenticated, (req, res) => {
               })
     });
       
+//get request to retrieve notepad entries and display on notepad homepage
+//Triggered in notepad.saga via "FETCH_NOTES", triggered on page load @ notepadLandingPage
+    router.get('/notes', rejectUnauthenticated, (req, res) => {
+        const queryText = 
+                            `SELECT 
+                                "date",
+                                "header", 
+                                "description"
+                            FROM 
+                                "notepad"
+                            WHERE
+                                "user_id" = $1
+                            `
+        const queryParam = [req.user.id]
+        pool.query(queryText, queryParam)
+        .then(dbRes => {
+            res.send(dbRes.rows)
+        }).catch(err => {
+            console.log('error on the get notes from notepad.router', err)
+            res.sendStatus(500);
+        })
+    });
     
     module.exports = router;
     

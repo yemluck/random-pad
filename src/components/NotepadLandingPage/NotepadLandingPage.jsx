@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import './NotepadLandingPage.css';
@@ -8,6 +8,9 @@ function NotepadLandingPage() {
 
  // Hooks 
     const dispatch = useDispatch();
+// Reducers 
+    const noteEntry = useSelector(store => store.notepad);
+    console.log('Reducer object is', noteEntry);
 // State Variables 
     let [newDateAdded, setNewDateAdded] = useState('');
     let [description, setDescription] = useState('');
@@ -21,11 +24,16 @@ let noteToAdd =
     description: description
 }
     
+// Page Load Functions:
+    useEffect(()=> {
+        dispatch({
+        type: 'FETCH_NOTES'
+        });
+    }, [])
 
 // Button Functions 
     // function to send noteToAdd to saga 
-    function addNoteToNotepad(event){
-        event.preventDefault();
+    function addNoteToNotepad(){
         dispatch({
             type: 'ADD_NOTE_TO_NOTEPAD',
             payload: noteToAdd
@@ -40,6 +48,7 @@ let noteToAdd =
         setDescription('');
         setHeader('');
     }
+
 
   return (
     <>
@@ -103,11 +112,28 @@ let noteToAdd =
             <h2> Clear Entry</h2>
         </button>
     </div>
+
+{/* Div to store previous notepad entries */}
+    <div>
+        <div key={noteEntry.id}>
+    {noteEntry.map(note => {
+            return(
+              <div key={note.id}>
+              <div>
+                  <h3>{note.date}</h3>
+                  <h1>{note.header}</h1>
+                  <h3>{note.description}</h3>
+              </div>
+            </div>
+            )
+            })}
+  </div>
+
     {/* button styling is handled in the userPage.css  */}
     <Link to="/user"><button className="notepadBtn"> <h2>User Homepage</h2></button></Link>
-
+</div>
     </>
-  );
+  )
 }
 
 export default NotepadLandingPage;
