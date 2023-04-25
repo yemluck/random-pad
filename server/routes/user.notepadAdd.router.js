@@ -37,6 +37,7 @@ router.post('/notes', rejectUnauthenticated, (req, res) => {
     });
       
 //get request to retrieve notepad entries and display on notepad homepage
+//Triggered in notepad.saga via "FETCH_NOTES", triggered on page load @ notepadLandingPage
     router.get('/notes', rejectUnauthenticated, (req, res) => {
         const queryText = 
                             `SELECT 
@@ -45,9 +46,7 @@ router.post('/notes', rejectUnauthenticated, (req, res) => {
                             "description",
                             FROM notepad 
                             `
-        const queryParams= [req.user.id]
-       
-        pool.query(queryText, queryParams)
+        pool.query(queryText)
         .then(dbRes => {
             res.send(dbRes.rows)
         }).catch(err => {

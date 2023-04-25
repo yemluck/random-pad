@@ -16,7 +16,7 @@ function* fetchNotes(){
     let response = yield axios.get('/notes');
    
     yield put({
-        type: 'SET_NOTES',
+        type: 'SET_NOTES_REDUCER',
         payload: response.data
     })
 }

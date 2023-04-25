@@ -10,7 +10,7 @@ function NotepadLandingPage() {
     const dispatch = useDispatch();
 // Reducers 
     const noteEntry = useSelector(store => store.notepadReducer);
-
+    console.log('Reducer object is', noteEntry);
 // State Variables 
     let [newDateAdded, setNewDateAdded] = useState('');
     let [description, setDescription] = useState('');
@@ -115,7 +115,7 @@ let noteToAdd =
     </div>
 
 {/* Div to store previous notepad entries */}
-    <div class="notesHistory">
+    {/* <div class="notesHistory">
         <div key={noteEntry.id}>
     {noteEntry.map(note => {
             return(
@@ -128,11 +128,11 @@ let noteToAdd =
             </div>
             )
             })}
-  </div>
+  </div> */}
 
     {/* button styling is handled in the userPage.css  */}
     <Link to="/user"><button className="notepadBtn"> <h2>User Homepage</h2></button></Link>
-</div>
+{/* </div> */}
     </>
   )
 }
