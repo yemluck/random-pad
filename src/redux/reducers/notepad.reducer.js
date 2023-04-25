@@ -10,11 +10,6 @@ const notepadReducer = (state=[], action) => {
     }
   }; // End notepad reducer
 
-
-
-
-
-
 export default combineReducers({
    notepadReducer
   });
