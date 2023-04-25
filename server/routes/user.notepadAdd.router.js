@@ -41,6 +41,7 @@ router.post('/notes', rejectUnauthenticated, (req, res) => {
     router.get('/notes', rejectUnauthenticated, (req, res) => {
         const queryText = 
                             `SELECT 
+                                "id",
                                 "date",
                                 "header", 
                                 "description"
