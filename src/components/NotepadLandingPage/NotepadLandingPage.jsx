@@ -9,7 +9,7 @@ function NotepadLandingPage() {
  // Hooks 
     const dispatch = useDispatch();
 // Reducers 
-    const noteEntry = useSelector(store => store.notepadReducer);
+    const noteEntry = useSelector(store => store.notepad);
     console.log('Reducer object is', noteEntry);
 // State Variables 
     let [newDateAdded, setNewDateAdded] = useState('');
