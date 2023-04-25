@@ -42,7 +42,7 @@ router.post('/notes', rejectUnauthenticated, (req, res) => {
         const queryText = 
                             `SELECT 
                                 "id",
-                                "date",
+                                TO_CHAR("date",'YYYY-MM-DD')
                                 "header", 
                                 "description"
                             FROM 

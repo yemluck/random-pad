@@ -120,9 +120,9 @@ let noteToAdd =
             return(
               <div key={note.id}>
               <div>
-                  <h3>{note.date}</h3>
-                  <h1>{note.header}</h1>
-                  <h3>{note.description}</h3>
+                  <h2>Date:</h2> <h3>{note.date}</h3>
+                  <h2>Header:</h2><h1>{note.header}</h1>
+                  <h2>Note:</h2><h3>{note.description}</h3>
               </div>
             </div>
             )
