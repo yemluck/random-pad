@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-
 
 const notepadReducer = (state=[], action) => {
     switch(action.type) {
@@ -10,7 +8,5 @@ const notepadReducer = (state=[], action) => {
     }
   }; // End notepad reducer
 
-export default combineReducers({
-   notepadReducer
-  });
+export default notepadReducer;
   

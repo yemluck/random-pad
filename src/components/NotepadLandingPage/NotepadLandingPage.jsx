@@ -33,8 +33,7 @@ let noteToAdd =
 
 // Button Functions 
     // function to send noteToAdd to saga 
-    function addNoteToNotepad(event){
-        event.preventDefault();
+    function addNoteToNotepad(){
         dispatch({
             type: 'ADD_NOTE_TO_NOTEPAD',
             payload: noteToAdd
@@ -115,7 +114,7 @@ let noteToAdd =
     </div>
 
 {/* Div to store previous notepad entries */}
-    {/* <div class="notesHistory">
+    <div>
         <div key={noteEntry.id}>
     {noteEntry.map(note => {
             return(
@@ -128,11 +127,11 @@ let noteToAdd =
             </div>
             )
             })}
-  </div> */}
+  </div>
 
     {/* button styling is handled in the userPage.css  */}
     <Link to="/user"><button className="notepadBtn"> <h2>User Homepage</h2></button></Link>
-{/* </div> */}
+</div>
     </>
   )
 }

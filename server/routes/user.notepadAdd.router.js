@@ -41,12 +41,16 @@ router.post('/notes', rejectUnauthenticated, (req, res) => {
     router.get('/notes', rejectUnauthenticated, (req, res) => {
         const queryText = 
                             `SELECT 
-                            "date",
-                            "header", 
-                            "description",
-                            FROM notepad 
+                                "date",
+                                "header", 
+                                "description"
+                            FROM 
+                                "notepad"
+                            WHERE
+                                "user_id" = $1
                             `
-        pool.query(queryText)
+        const queryParam = [req.user.id]
+        pool.query(queryText, queryParam)
         .then(dbRes => {
             res.send(dbRes.rows)
         }).catch(err => {

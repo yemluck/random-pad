@@ -13,7 +13,7 @@ function* addNoteToNotepad(action){
 }
 //GET request to retrieve user entries from notepad
 function* fetchNotes(){
-    let response = yield axios.get('/notes');
+    let response = yield axios.get('/user/notes');
    
     yield put({
         type: 'SET_NOTES_REDUCER',
