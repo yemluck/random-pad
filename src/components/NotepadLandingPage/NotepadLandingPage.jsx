@@ -115,14 +115,15 @@ let noteToAdd =
 
 {/* Div to store previous notepad entries */}
     <div>
+        <h1> Notepad Entry History:</h1>
         <div key={noteEntry.id}>
     {noteEntry.map(note => {
             return(
-              <div key={note.id}>
-              <div>
-                  <h2>Date:</h2> <h3>{note.date}</h3>
-                  <h2>Header:</h2><h1>{note.header}</h1>
-                  <h2>Note:</h2><h3>{note.description}</h3>
+              <div key={note.id} >
+              <div className= "noteHistoryBox">
+                  <div className="noteHistoryLine"> <h2><u>Date:</u></h2> <h3>{note.date}</h3> </div>
+                 <div className="noteHistoryLine"> <h2><u>Header:</u></h2><h2><b>{note.header}</b></h2></div>
+                 <div className="noteHistoryLine"> <h2><u>Note:</u></h2><h3>{note.description}</h3></div>
               </div>
             </div>
             )
