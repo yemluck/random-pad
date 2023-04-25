@@ -6,10 +6,18 @@
 
 .noteHistoryBox{
     border: 2px solid black;
-    width: 25%;
+    width: 20%;
     height: 400px;
     margin: 10px;
     text-align: center;
     display: flex;
     flex-direction: column;
+    background-color: rgb(249, 255, 196);
+}
+
+.noteHistoryLine{
+    margin: 0px;
+    display: inline-block;
+  
+    
 }
