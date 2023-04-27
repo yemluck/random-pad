@@ -21,11 +21,29 @@ function* fetchNotes(){
     })
 }
 
+//Function triggered when delete button is pushed 
+function* deleteNote(action){
+    try{
+       let response = yield axios.delete(`/user/notes/${action.payload}`)
+        console.log('action payload is', action.payload);
+
+        yield put({
+            type: 'FETCH_NOTES',
+            payload: response.data
+        })
+
+    } catch(error){
+        console.log('Error with creating notes', error);
+    }
+
+}
+
 // route is /client/birds
 
 function* addNoteToSaga(){
     yield takeEvery('ADD_NOTE_TO_NOTEPAD', addNoteToNotepad);
     yield takeEvery('FETCH_NOTES', fetchNotes);
+    yield takeEvery('DELETE_NOTE', deleteNote);
 }
 
 export default addNoteToSaga;
