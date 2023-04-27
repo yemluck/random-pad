@@ -28,7 +28,7 @@ function* deleteNote(action){
         console.log('action payload is', action.payload);
 
         yield put({
-            type: 'SET_NOTES_REDUCER',
+            type: 'FETCH_NOTES',
             payload: response.data
         })
 
