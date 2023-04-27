@@ -64,12 +64,12 @@ router.post('/notes', rejectUnauthenticated, (req, res) => {
 
 //Delete request triggered by 'DELETE_NOTE'
     
-router.delete('/:id', rejectUnauthenticated, (req, res) => {
+router.delete('/notes/:id', rejectUnauthenticated, (req, res) => {
     console.log('note id is', req.params.id);
   
     const queryText = `DELETE FROM notepad
-                        WHERE user_id = $1 AND id = $2
-    `
+                        WHERE user_id = $1 AND id = $2 
+                      `
     const queryParams = [req.user.id, req.params.id];
   
     pool.query(queryText, queryParams)
