@@ -59,7 +59,30 @@ router.post('/notes', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         })
     });
+
+
+
+//Delete request triggered by 'DELETE_NOTE'
     
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('note id is', req.params.id);
+  
+    const queryText = `DELETE FROM notepad
+                        WHERE user_id = $1 AND id = $2
+    `
+    const queryParams = [req.user.id, req.params.id];
+  
+    pool.query(queryText, queryParams)
+                .then(() => {res.sendStatus(200)
+                console.log('successful delete');
+                })
+                .catch((err) => {
+                  console.log('Error completing note DELETE', err);
+                  res.sendStatus(500);
+                })
+  });
+
+
     module.exports = router;
     
     
