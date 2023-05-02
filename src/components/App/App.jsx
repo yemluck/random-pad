@@ -78,7 +78,7 @@ function App() {
          {/* Todo List Homepage Path */}
           <ProtectedRoute
             exact
-            path="/Notepad"
+            path="/TodoList"
           >
             <TodoListLandingPage />
           </ProtectedRoute>
