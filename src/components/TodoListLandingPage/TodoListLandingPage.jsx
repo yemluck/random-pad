@@ -42,7 +42,7 @@ function handleSubmit(event){
    // function to send Todo to saga 
    function sendTodo(){
     dispatch({
-        type: 'ADD_TODOS',
+        type: 'ADD_TASK',
         payload: ToDoToAdd
     })
     console.log('your note has been sent');

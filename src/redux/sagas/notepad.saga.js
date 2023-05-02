@@ -38,7 +38,7 @@ function* deleteNote(action){
 
 }
 
-// route is /client/birds
+// route is /user/notepad
 
 function* addNoteToSaga(){
     yield takeEvery('ADD_NOTE_TO_NOTEPAD', addNoteToNotepad);
