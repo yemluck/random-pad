@@ -19,7 +19,15 @@ function UserPage() {
       <h2> Capsulate your inner thoughts and ideas </h2>
 
       <Link to="/notepad"><button className="notepadBtn"> <h1>Notepad Homepage</h1></button></Link>
+      
       </div> 
+      <div className="notepadNavigation"> 
+      <h2> Get to Your To Do List </h2>
+
+      <Link to="/todoList"><button className="notepadBtn"> <h1>To Do List Homepage</h1></button></Link>
+      
+      </div> 
+
 
       <LogOutButton className="btn" />
     </div>

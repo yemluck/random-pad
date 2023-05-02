@@ -13,22 +13,17 @@ function TodoListLandingPage() {
 // State Variables 
     let [newDateAdded, setNewDateAdded] = useState('');
     let [description, setDescription] = useState('');
-    let [header, setHeader] = useState('');
+    let [task, setTask] = useState('');
 
 // Create notepad and descriptions, send to reducer via dispatch
 let ToDoToAdd = 
 {
-    date: newDateAdded,
-    header: header,
+    date_created: newDateAdded,
+    task: task,
     description: description
 }
     
 // Page Load Functions:
-    useEffect(()=> {
-        dispatch({
-        type: 'FETCH_TODOS'
-        });
-    }, [])
 
 // Button Functions 
     // function to send noteToAdd to saga 
@@ -56,6 +51,53 @@ let ToDoToAdd =
         />
     </div>
     <div className= "todoList formContainer">
+   
+        <h3> Start an Entry:</h3>
+    <div className= "entryInput">
+          <label> Enter The Date Here 
+          <input
+            required
+            type="date"
+            name= "dateEntry"
+            id="dateEntry"
+            value={newDateAdded}
+            onChange={(e) => {
+              setNewDateAdded(e.target.value);
+            }}
+          />
+          </label>
+          </div>
+          <div className="InputAndBtn">
+          <label> Enter Your Task:
+            <input
+            id="taskText"
+            placeholder="Task Here"
+            value={task}
+            onChange={(e) => {
+              setTask(e.target.value);
+            }}
+          />
+          </label>
+          </div>
+         <form className="todoDropDown" onSubmit= {this.handleSubmit}> 
+          <label> Set Priority:
+           <select value={this.state.value} onChange={this.handleChange}> 
+                <option value= "1"> High </option>
+                <option value="2"> Moderate </option>
+                <option value="3"> Low </option>
+           </select>
+          </label>
+          <input type="submit" value="Submit" />
+
+          </form>
+          {/* Submit button will need onClick function to send the state variables to the reducer saga */}
+        <button className="formSubmitBtn" onClick={addNoteToNotepad} >
+            <h2> Submit</h2> 
+        </button>
+        {/* Clear entry button has onClick function that clears the useState variables */}
+        <button className="formSubmitBtn" onClick={handleClear} >
+            <h2> Clear Entry</h2>
+        </button>
 
     </div>
     </>

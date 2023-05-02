@@ -75,10 +75,11 @@ function App() {
           >
             <NotepadLandingPage />
           </ProtectedRoute>
+
          {/* Todo List Homepage Path */}
           <ProtectedRoute
             exact
-            path="/TodoList"
+            path="/todoList"
           >
             <TodoListLandingPage />
           </ProtectedRoute>
