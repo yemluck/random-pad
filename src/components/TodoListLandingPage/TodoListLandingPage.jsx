@@ -20,7 +20,7 @@ let ToDoToAdd =
 {
     date_created: date,
     task: task,
-    priority: priority
+    status: priority
 }
     
 // Page Load Functions:
@@ -34,9 +34,9 @@ function handleSubmit(event){
 
     // function to clear inputs after client has entered data
     function handleClear(){
-        setNewDateAdded('');
+        setDate('');
         setPriority('');
-        setHeader('');
+        setTask('');
     }
 
    // function to send Todo to saga 
@@ -45,7 +45,9 @@ function handleSubmit(event){
         type: 'ADD_TASK',
         payload: ToDoToAdd
     })
-    console.log('your note has been sent');
+    setDate('');
+    setPriority('');
+    setTask('');
 }
   return (
     <>
@@ -93,12 +95,11 @@ function handleSubmit(event){
           <label> Set Priority:
            <select value={priority} 
                     onChange={(e) => { setPriority(e.target.value); }}> 
-                <option value= "1"> High </option>
+                <option value= "1" > High </option>
                 <option value="2"> Moderate </option>
                 <option value="3"> Low </option>
            </select>
           </label>
-          <input type="submit" value="Submit" />
 
           </form>
           {/* Submit button will need onClick function to send the state variables to the reducer saga */}

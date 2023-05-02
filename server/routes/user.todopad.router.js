@@ -11,8 +11,7 @@ const router = express.Router();
 router.post('/todo', rejectUnauthenticated, (req, res) => {
     console.log('req.booty is ', req.body)
           const insertNoteQuery = `
-                              INSERT INTO todo_pad (
-                                  "user_id", 
+                              INSERT INTO todo_pad ( 
                                   "date_created", 
                                   "task",  
                                   "status"
@@ -21,7 +20,6 @@ router.post('/todo', rejectUnauthenticated, (req, res) => {
                                   ($1, $2, $3, $4);
                                ` 
           const queryParams= [
-                              req.user.id, 
                               req.body.date,
                               req.body.task,  
                               req.body.priority,

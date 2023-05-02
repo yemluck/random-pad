@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 //function to post task to todo table via /todo
-function addTaskToList(action){
+function* addTaskToList(action){
     try{
         yield axios.post('/user/todo', action.payload)
         console.log('action payload is', action.payload);
