@@ -11,32 +11,42 @@ function TodoListLandingPage() {
 // Reducers 
    
 // State Variables 
-    let [newDateAdded, setNewDateAdded] = useState('');
-    let [description, setDescription] = useState('');
+    let [date, setDate] = useState('');
+    let [priority, setPriority] = useState('');
     let [task, setTask] = useState('');
 
 // Create notepad and descriptions, send to reducer via dispatch
 let ToDoToAdd = 
 {
-    date_created: newDateAdded,
+    date_created: date,
     task: task,
-    description: description
+    priority: priority
 }
     
 // Page Load Functions:
 
 // Button Functions 
     // function to send noteToAdd to saga 
-
+function handleSubmit(event){
+    alert('Your Task is set to ' + this.state.value + 'Priority')
+    event.preventDefault();
+}
 
     // function to clear inputs after client has entered data
     function handleClear(){
         setNewDateAdded('');
-        setDescription('');
+        setPriority('');
         setHeader('');
     }
 
-
+   // function to send Todo to saga 
+   function sendTodo(){
+    dispatch({
+        type: 'ADD_TODOS',
+        payload: ToDoToAdd
+    })
+    console.log('your note has been sent');
+}
   return (
     <>
     <div className="TodoListHeader"> 
@@ -60,9 +70,9 @@ let ToDoToAdd =
             type="date"
             name= "dateEntry"
             id="dateEntry"
-            value={newDateAdded}
+            value={date}
             onChange={(e) => {
-              setNewDateAdded(e.target.value);
+              setDate(e.target.value);
             }}
           />
           </label>
@@ -79,9 +89,10 @@ let ToDoToAdd =
           />
           </label>
           </div>
-         <form className="todoDropDown" onSubmit= {this.handleSubmit}> 
+         <form onSubmit= {handleSubmit}> 
           <label> Set Priority:
-           <select value={this.state.value} onChange={this.handleChange}> 
+           <select value={priority} 
+                    onChange={(e) => { setPriority(e.target.value); }}> 
                 <option value= "1"> High </option>
                 <option value="2"> Moderate </option>
                 <option value="3"> Low </option>
