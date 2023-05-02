@@ -53,7 +53,7 @@ function handleSubmit(event){
     <>
     <div className="TodoListHeader"> 
         <h2> Welcome to your personalized To Do List, 
-            Where Todo is turned into TA - DA!!! 
+            Where To-Do is turned into TA - DA!!! 
         </h2>
         <img 
             src= "https://www.pngitem.com/pimgs/m/71-719717_to-do-list-png-transparent-cartoons-png-download.png"           
