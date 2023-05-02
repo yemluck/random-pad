@@ -102,7 +102,7 @@ function handleSubmit(event){
 
           </form>
           {/* Submit button will need onClick function to send the state variables to the reducer saga */}
-        <button className="formSubmitBtn" onClick={addNoteToNotepad} >
+        <button className="formSubmitBtn" onClick={sendTodo} >
             <h2> Submit</h2> 
         </button>
         {/* Clear entry button has onClick function that clears the useState variables */}
