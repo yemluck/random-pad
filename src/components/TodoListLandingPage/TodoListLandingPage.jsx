@@ -14,13 +14,15 @@ function TodoListLandingPage() {
     let [date, setDate] = useState('');
     let [priority, setPriority] = useState('');
     let [task, setTask] = useState('');
+    let [status, setStatus] = useState(FALSE);
 
 // Create notepad and descriptions, send to reducer via dispatch
 let ToDoToAdd = 
 {
     date_created: date,
     task: task,
-    status: priority
+    status: status, 
+    priority: priority
 }
     
 // Page Load Functions:
@@ -41,6 +43,7 @@ function handleSubmit(event){
 
    // function to send Todo to saga 
    function sendTodo(){
+    setStatus(FALSE);
     dispatch({
         type: 'ADD_TASK',
         payload: ToDoToAdd
