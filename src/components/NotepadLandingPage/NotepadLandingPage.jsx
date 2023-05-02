@@ -111,7 +111,7 @@ let noteToAdd =
           </div>
           {/* Submit button will need onClick function to send the state variables to the reducer saga */}
         <button className="formSubmitBtn" onClick={addNoteToNotepad} >
-            <h2> Submit</h2>
+            <h2> Submit</h2> 
         </button>
         {/* Clear entry button has onClick function that clears the useState variables */}
         <button className="formSubmitBtn" onClick={handleClear} >

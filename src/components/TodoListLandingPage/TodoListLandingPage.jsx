@@ -44,7 +44,11 @@ let ToDoToAdd =
 
   return (
     <>
-    
+    <div className="TodoListHeader"> 
+        <h2> Welcome to your personalized To Do List, 
+            Where Todo is turned into TA - DA!!! 
+        </h2>
+    </div>
     </>
   )
 }
