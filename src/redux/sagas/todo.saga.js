@@ -8,7 +8,7 @@ function addTaskToList(action){
         yield axios.post('/user/todo', action.payload)
         console.log('action payload is', action.payload);
     } catch(error){
-        console.log('Error with creating notes', error);
+        console.log('Error with posting todo to table', error);
     }
 }
 
