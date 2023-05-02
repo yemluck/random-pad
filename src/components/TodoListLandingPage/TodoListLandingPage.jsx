@@ -48,6 +48,15 @@ let ToDoToAdd =
         <h2> Welcome to your personalized To Do List, 
             Where Todo is turned into TA - DA!!! 
         </h2>
+        <img 
+            src= "https://www.pngitem.com/pimgs/m/71-719717_to-do-list-png-transparent-cartoons-png-download.png"           
+            width= {600}
+            height={450}
+            alt= "picture of the master to do list"
+        />
+    </div>
+    <div className= "todoList formContainer">
+
     </div>
     </>
   )
