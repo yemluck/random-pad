@@ -14,8 +14,8 @@ router.post('/todo', rejectUnauthenticated, (req, res) => {
                               INSERT INTO todo_pad ( 
                                   "date_created", 
                                   "task",  
-                                  "status" DEFAULT FALSE,
                                   "priority",
+                                  "status",
                                   "user_id"
                                   )
                               VALUES

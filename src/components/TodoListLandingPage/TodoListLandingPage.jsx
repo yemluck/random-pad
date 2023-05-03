@@ -14,26 +14,20 @@ function TodoListLandingPage() {
     let [date, setDate] = useState('');
     let [priority, setPriority] = useState('');
     let [task, setTask] = useState('');
-    let [status, setStatus] = useState(FALSE);
+    let [status, setStatus] = useState('');
 
 // Create notepad and descriptions, send to reducer via dispatch
 let ToDoToAdd = 
 {
     date_created: date,
     task: task,
-    status: status, 
+    status: 'false', 
     priority: priority
 }
     
 // Page Load Functions:
 
 // Button Functions 
-    // function to send noteToAdd to saga 
-function handleSubmit(event){
-    alert('Your Task is set to ' + this.state.value + 'Priority')
-    event.preventDefault();
-}
-
     // function to clear inputs after client has entered data
     function handleClear(){
         setDate('');
@@ -43,7 +37,6 @@ function handleSubmit(event){
 
    // function to send Todo to saga 
    function sendTask(){
-    setStatus(FALSE);
     dispatch({
         type: 'ADD_TASK',
         payload: ToDoToAdd
@@ -94,13 +87,13 @@ function handleSubmit(event){
           />
           </label>
           </div>
-         <form onSubmit= {handleSubmit}> 
+         <form> 
           <label> Set Priority:
            <select value={priority} 
                     onChange={(e) => { setPriority(e.target.value); }}> 
-                <option value= "1" > High </option>
-                <option value="2"> Moderate </option>
-                <option value="3"> Low </option>
+                <option value= "High" > High </option>
+                <option value="Moderate"> Moderate </option>
+                <option value="Low"> Low </option>
            </select>
           </label>
 
