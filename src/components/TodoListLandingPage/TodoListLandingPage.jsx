@@ -38,8 +38,8 @@ let ToDoToAdd =
    // function to send Todo to saga 
    function sendTask(){
 
-    if (priority === "") {
-        alert('Oops, you have not selected a priority for your task, please confirm selection to submit task');
+    if (priority === "" || date=== "") {
+        alert('Oops, you have left an input blank, review entry to ensure all inputs are properly filled');
 
         
     } else {
