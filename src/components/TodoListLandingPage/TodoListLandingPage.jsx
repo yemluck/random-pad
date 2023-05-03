@@ -37,6 +37,10 @@ let ToDoToAdd =
 
    // function to send Todo to saga 
    function sendTask(){
+
+    if (priority === "" || date=== "" || task==="") {
+        alert('Oops, you have left an input blank, review entry to ensure all inputs are properly filled');
+    } else {
     dispatch({
         type: 'ADD_TASK',
         payload: ToDoToAdd
@@ -44,7 +48,9 @@ let ToDoToAdd =
     setDate('');
     setPriority('');
     setTask('');
+    }
 }
+
   return (
     <>
     <div className="TodoListHeader"> 
@@ -91,9 +97,9 @@ let ToDoToAdd =
          <div className="TodoInputAndBtn">
          <form> 
           <label>  Set Priority:
-           <select value={priority} 
+          <select value={priority} 
                     onChange={(e) => { setPriority(e.target.value); }}> 
-                <option value= "">  Select Your Priority  </option>
+                <option value="" >  Select Your Priority  </option>
                 <option value= "High">  High  </option>
                 <option value="Moderate"> Moderate </option>
                 <option value="Low"> Low </option>
