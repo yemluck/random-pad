@@ -21,7 +21,7 @@ CREATE TABLE "todo_pad" (
     "id" SERIAL PRIMARY KEY,
     "date_created" DATE NOT NULL,
     "task" VARCHAR (255) NOT NULL,
-    "status" BOOLEAN DEFAULT FALSE,
+    "status" VARCHAR (10),
     "priority" VARCHAR (20),
     "user_id" INT REFERENCES "user"(id)
 );
