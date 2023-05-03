@@ -3,7 +3,6 @@ import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import './NotepadLandingPage.css';
 
-
 function NotepadLandingPage() {
 
  // Hooks 
@@ -101,6 +100,7 @@ let noteToAdd =
           </label>
           </div>
 
+          
           <div className="InputAndBtn">
           <label> What is it that You Cannot Forget?
             <input
@@ -110,9 +110,11 @@ let noteToAdd =
             onChange={(e) => {
               setDescription(e.target.value);
             }}
+            
           />
           </label>
           </div>
+
           {/* Submit button will need onClick function to send the state variables to the reducer saga */}
         <button className="formSubmitBtn" onClick={addNoteToNotepad} >
             <h2> Submit</h2> 

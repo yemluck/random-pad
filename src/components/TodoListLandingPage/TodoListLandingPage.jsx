@@ -93,6 +93,7 @@ let ToDoToAdd =
           <label>  Set Priority:
            <select value={priority} 
                     onChange={(e) => { setPriority(e.target.value); }}> 
+                
                 <option value= "High">  High  </option>
                 <option value="Moderate"> Moderate </option>
                 <option value="Low"> Low </option>

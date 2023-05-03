@@ -14,19 +14,19 @@ router.post('/todo', rejectUnauthenticated, (req, res) => {
                               INSERT INTO todo_pad ( 
                                   "date_created", 
                                   "task",  
-                                  "priority",
                                   "status",
-                                  "user_id"
+                                  "priority",
+                                 "user_id"
                                   )
                               VALUES
                                   ($1, $2, $3, $4, $5);
                                ` 
           const queryParams= [
-                              req.body.date,
+                              req.body.date_created,
                               req.body.task,  
                               req.body.status,
                               req.body.priority,
-                              req.body.user_id
+                              req.user.id
                               ]
             pool.query(insertNoteQuery, queryParams)
             .then(dbRes => {
