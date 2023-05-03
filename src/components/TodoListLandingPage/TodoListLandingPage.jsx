@@ -37,6 +37,12 @@ let ToDoToAdd =
 
    // function to send Todo to saga 
    function sendTask(){
+
+    if (priority === "") {
+        alert('Oops, you have not selected a priority for your task, please confirm selection to submit task');
+
+        
+    } else {
     dispatch({
         type: 'ADD_TASK',
         payload: ToDoToAdd
@@ -44,22 +50,9 @@ let ToDoToAdd =
     setDate('');
     setPriority('');
     setTask('');
-}
-
-//function to handle priority dropdown
-const handleDropdown = (event) => {
-        
-    console.log('priority has been set to', priority);
-    
-    //input validation
-    if (priority=== ''){
-        alert('Oops, you have not selected a priority for your task, please confirm selection to submit task');
-       
-    }else{
-    //set priority as High, Medium or Low
-        setPriority(e.target.value)
     }
 }
+
   return (
     <>
     <div className="TodoListHeader"> 
@@ -106,8 +99,9 @@ const handleDropdown = (event) => {
          <div className="TodoInputAndBtn">
          <form> 
           <label>  Set Priority:
-           <select value={priority} onChange={handleDropdown}> 
-                <option value= "">  Select Your Priority  </option>
+          <select value={priority} 
+                    onChange={(e) => { setPriority(e.target.value); }}> 
+                <option disable value="" >  Select Your Priority  </option>
                 <option value= "High">  High  </option>
                 <option value="Moderate"> Moderate </option>
                 <option value="Low"> Low </option>
