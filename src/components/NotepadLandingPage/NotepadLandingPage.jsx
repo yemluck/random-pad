@@ -8,9 +8,11 @@ function NotepadLandingPage() {
 
  // Hooks 
     const dispatch = useDispatch();
+    const history = useHistory();
+
 // Reducers 
     const noteEntry = useSelector(store => store.notepad);
-    console.log('Reducer object is', noteEntry);
+
 // State Variables 
     let [newDateAdded, setNewDateAdded] = useState('');
     let [description, setDescription] = useState('');
@@ -39,6 +41,8 @@ let noteToAdd =
             payload: noteToAdd
         })
         console.log('your note has been sent');
+        window.location.reload(false);
+
     }
     //function to delete note:
     function handleDelete(id){
