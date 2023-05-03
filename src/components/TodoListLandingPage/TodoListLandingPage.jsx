@@ -48,20 +48,21 @@ let ToDoToAdd =
   return (
     <>
     <div className="TodoListHeader"> 
-        <h2> Welcome to your personalized To Do List, 
-            Where To-Do is turned into TA - DA!!! 
-        </h2>
+        <h1> <i> Welcome to your personalized To Do List, 
+            where To-Do is turned into TA - DA!!! </i>
+        </h1>
         <img 
             src= "https://www.pngitem.com/pimgs/m/71-719717_to-do-list-png-transparent-cartoons-png-download.png"           
             width= {600}
             height={450}
             alt= "picture of the master to do list"
+            className="todoImg"
         />
     </div>
     <div className= "todoList formContainer">
    
-        <h3> Start an Entry:</h3>
-    <div className= "entryInput">
+        <h2> Start Your Task Entry Here:</h2>
+    <div className= "TodoInputAndBtn">
           <label> Enter The Date Here 
           <input
             required
@@ -75,7 +76,7 @@ let ToDoToAdd =
           />
           </label>
           </div>
-          <div className="InputAndBtn">
+          <div className="TodoInputAndBtn">
           <label> Enter Your Task:
             <input
             id="taskText"
@@ -87,27 +88,31 @@ let ToDoToAdd =
           />
           </label>
           </div>
+         <div className="TodoInputAndBtn">
          <form> 
-          <label> Set Priority:
+          <label>  Set Priority:
            <select value={priority} 
                     onChange={(e) => { setPriority(e.target.value); }}> 
-                <option value= "High" > High </option>
+                <option value= "High">  High  </option>
                 <option value="Moderate"> Moderate </option>
                 <option value="Low"> Low </option>
            </select>
+          
           </label>
-
+        
           </form>
+          </div>
+          </div>
           {/* Submit button will need onClick function to send the state variables to the reducer saga */}
-        <button className="formSubmitBtn" onClick={sendTask} >
+        <button className="todoFormSubmitBtn" onClick={sendTask} >
             <h2> Submit</h2> 
         </button>
         {/* Clear entry button has onClick function that clears the useState variables */}
-        <button className="formSubmitBtn" onClick={handleClear} >
+        <button className="todoFormSubmitBtn" onClick={handleClear} >
             <h2> Clear Entry</h2>
         </button>
 
-    </div>
+    
     </>
   )
 }
