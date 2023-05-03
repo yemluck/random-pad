@@ -3,14 +3,15 @@ import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import './NotepadLandingPage.css';
 
-
 function NotepadLandingPage() {
 
  // Hooks 
     const dispatch = useDispatch();
+    const history = useHistory();
+
 // Reducers 
     const noteEntry = useSelector(store => store.notepad);
-    console.log('Reducer object is', noteEntry);
+
 // State Variables 
     let [newDateAdded, setNewDateAdded] = useState('');
     let [description, setDescription] = useState('');
@@ -39,6 +40,11 @@ let noteToAdd =
             payload: noteToAdd
         })
         console.log('your note has been sent');
+        window.location.reload(false);
+        setNewDateAdded('')
+        setDescription('')
+        setHeader('')
+
     }
     //function to delete note:
     function handleDelete(id){
@@ -48,12 +54,13 @@ let noteToAdd =
             })
     }
 
-    // function to clear inputs after client has entered data
-    function handleClear(){
-        setNewDateAdded('');
-        setDescription('');
-        setHeader('');
-    }
+    // I don't think we need this
+    // // function to clear inputs after client has entered data
+    // function handleClear(){
+    //     setNewDateAdded('');
+    //     setDescription('');
+    //     setHeader('');
+    // }
 
 
   return (
@@ -97,6 +104,7 @@ let noteToAdd =
           </label>
           </div>
 
+          
           <div className="InputAndBtn">
           <label> What is it that You Cannot Forget?
             <input
@@ -106,17 +114,19 @@ let noteToAdd =
             onChange={(e) => {
               setDescription(e.target.value);
             }}
+            
           />
           </label>
           </div>
+
           {/* Submit button will need onClick function to send the state variables to the reducer saga */}
         <button className="formSubmitBtn" onClick={addNoteToNotepad} >
-            <h2> Submit</h2>
+            <h2> Submit</h2> 
         </button>
         {/* Clear entry button has onClick function that clears the useState variables */}
-        <button className="formSubmitBtn" onClick={handleClear} >
+        {/* <button className="formSubmitBtn" onClick={handleClear} >
             <h2> Clear Entry</h2>
-        </button>
+        </button> */}
     </div>
 
 {/* Div to store previous notepad entries */}
