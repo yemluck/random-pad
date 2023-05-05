@@ -10,7 +10,18 @@ function NotepadDetailPage() {
     const params = useParams();
     const dispatch = useDispatch()
 
+    //Reducers: 
+    const note = useSelector(store=> store.noteDetail);
 
+
+    // function that runs on page load 
+    useEffect(() => {
+        dispatch({
+          type: 'NOTE_DETAIL',
+          payload: Number(params.id)
+        })
+      },[params.id])
+    
   
   
     return (
