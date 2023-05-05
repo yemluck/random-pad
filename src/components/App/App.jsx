@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import NotepadLandingPage from '../NotepadLandingPage/NotepadLandingPage';
 import TodoListLandingPage from '../TodoListLandingPage/TodoListLandingPage';
+import NotepadDetailPage from '../NotepadDetailPage/NotepadDetailPage';
 import './App.css';
 
 function App() {
