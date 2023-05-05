@@ -9,6 +9,7 @@ function NotepadLandingPage() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+
 // Reducers 
     const noteEntry = useSelector(store => store.notepad);
 
@@ -53,15 +54,11 @@ let noteToAdd =
                 payload: id
             })
     }
-
-    // I don't think we need this
-    // // function to clear inputs after client has entered data
-    // function handleClear(){
-    //     setNewDateAdded('');
-    //     setDescription('');
-    //     setHeader('');
-    // }
-
+    //function to send user to detail page where they will edit their note entry
+    function handleEdit(note){  
+      history.push(`/${note.id}`)
+    }
+ 
 
   return (
     <>
@@ -123,10 +120,7 @@ let noteToAdd =
         <button className="formSubmitBtn" onClick={addNoteToNotepad} >
             <h2> Submit</h2> 
         </button>
-        {/* Clear entry button has onClick function that clears the useState variables */}
-        {/* <button className="formSubmitBtn" onClick={handleClear} >
-            <h2> Clear Entry</h2>
-        </button> */}
+
     </div>
 
 {/* Div to store previous notepad entries */}
@@ -141,6 +135,7 @@ let noteToAdd =
                  <div className="noteHistoryLine"> <h2><u>Header:</u></h2><h2><b>{note.header}</b></h2></div>
                  <div className="noteHistoryLine"> <h2><u>Note:</u></h2><h3>{note.description}</h3></div>
                  <button onClick={() => handleDelete(note.id)}>Delete</button>
+                 <button onClick= {() => handleEdit(note)}> Edit </button>
               </div>
              
             </div>

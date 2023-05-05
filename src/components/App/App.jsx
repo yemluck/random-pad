@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import NotepadLandingPage from '../NotepadLandingPage/NotepadLandingPage';
 import TodoListLandingPage from '../TodoListLandingPage/TodoListLandingPage';
+import NotepadDetailPage from '../NotepadDetailPage/NotepadDetailPage';
 import './App.css';
 
 function App() {
@@ -76,6 +77,13 @@ function App() {
             <NotepadLandingPage />
           </ProtectedRoute>
 
+          {/* Notepad Homepage Path */}
+          <ProtectedRoute
+                    exact
+                    path="/:id"
+                  >
+            <NotepadDetailPage/>
+          </ProtectedRoute>
          {/* Todo List Homepage Path */}
           <ProtectedRoute
             exact
