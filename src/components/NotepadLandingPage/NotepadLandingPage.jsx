@@ -54,14 +54,7 @@ let noteToAdd =
             })
     }
 
-    // I don't think we need this
-    // // function to clear inputs after client has entered data
-    // function handleClear(){
-    //     setNewDateAdded('');
-    //     setDescription('');
-    //     setHeader('');
-    // }
-
+ 
 
   return (
     <>
@@ -123,10 +116,7 @@ let noteToAdd =
         <button className="formSubmitBtn" onClick={addNoteToNotepad} >
             <h2> Submit</h2> 
         </button>
-        {/* Clear entry button has onClick function that clears the useState variables */}
-        {/* <button className="formSubmitBtn" onClick={handleClear} >
-            <h2> Clear Entry</h2>
-        </button> */}
+
     </div>
 
 {/* Div to store previous notepad entries */}
