@@ -131,6 +131,7 @@ let noteToAdd =
                  <div className="noteHistoryLine"> <h2><u>Header:</u></h2><h2><b>{note.header}</b></h2></div>
                  <div className="noteHistoryLine"> <h2><u>Note:</u></h2><h3>{note.description}</h3></div>
                  <button onClick={() => handleDelete(note.id)}>Delete</button>
+                 <button onClick= {handleEdit}> Edit </button>
               </div>
              
             </div>
