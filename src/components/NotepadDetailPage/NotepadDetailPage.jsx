@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams} from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import './NotepadDetailPage.css';
 
 
@@ -12,7 +11,7 @@ function NotepadDetailPage() {
 
     //Reducers: 
     const note = useSelector(store=> store.noteDetail);
-
+console.log('note object is', note);
 
     // function that runs on page load 
     useEffect(() => {
@@ -27,8 +26,9 @@ function NotepadDetailPage() {
     return (
         <>
         <div className="container">
-        
-        
+            <div>
+        <p> {note.header}</p>
+        </div>
         </div> 
         </>
     );

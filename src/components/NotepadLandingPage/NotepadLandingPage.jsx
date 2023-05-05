@@ -57,7 +57,6 @@ let noteToAdd =
     //function to send user to detail page where they will edit their note entry
     function handleEdit(note){  
       history.push(`/${note.id}`)
-
     }
  
 
