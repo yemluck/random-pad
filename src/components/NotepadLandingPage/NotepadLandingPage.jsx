@@ -53,7 +53,11 @@ let noteToAdd =
                 payload: id
             })
     }
+    //function to send user to detail page where they will edit their note entry
+    function handleEdit(note){  
+      navigate(`/${note.id}`)
 
+    }
  
 
   return (
@@ -131,7 +135,7 @@ let noteToAdd =
                  <div className="noteHistoryLine"> <h2><u>Header:</u></h2><h2><b>{note.header}</b></h2></div>
                  <div className="noteHistoryLine"> <h2><u>Note:</u></h2><h3>{note.description}</h3></div>
                  <button onClick={() => handleDelete(note.id)}>Delete</button>
-                 <button onClick= {() => handleEdit(note.id)}> Edit </button>
+                 <button onClick= {() => handleEdit(note)}> Edit </button>
               </div>
              
             </div>
