@@ -76,6 +76,13 @@ function App() {
             <NotepadLandingPage />
           </ProtectedRoute>
 
+          {/* Notepad Homepage Path */}
+          <ProtectedRoute
+                    exact
+                    path="/:id"
+                  >
+            <NotepadDetailPage/>
+          </ProtectedRoute>
          {/* Todo List Homepage Path */}
           <ProtectedRoute
             exact
