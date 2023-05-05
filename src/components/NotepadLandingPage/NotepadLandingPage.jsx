@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from 'react-router-dom';
 import './NotepadLandingPage.css';
 
 function NotepadLandingPage() {
@@ -9,7 +8,7 @@ function NotepadLandingPage() {
  // Hooks 
     const dispatch = useDispatch();
     const history = useHistory();
-    const navigate = useNavigate();
+
 
 // Reducers 
     const noteEntry = useSelector(store => store.notepad);
@@ -57,7 +56,7 @@ let noteToAdd =
     }
     //function to send user to detail page where they will edit their note entry
     function handleEdit(note){  
-      navigate(`/${note.id}`)
+      history.push(`/${note.id}`)
 
     }
  
