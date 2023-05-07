@@ -1,7 +1,7 @@
 
 const noteDetail= (state=[], action) => {
     switch(action.type) {
-        case 'NOTE_DETAIL': 
+        case 'SET_NOTE_DETAIL': 
             return action.payload
         default:
             return state;

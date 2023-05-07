@@ -27,7 +27,9 @@ console.log('note object is', note);
         <>
         <div className="container">
             <div>
-        <p> {note.header}</p>
+                <div className="noteDetailColumn"> <h2><u>Date:</u></h2> <h3>{note.date}</h3> </div>
+                 <div className="noteDetailColumn"> <h2><u>Header:</u></h2><h2><b>{note.header}</b></h2></div>
+                 <div className="noteDetailColumn"> <h2><u>Note:</u></h2><h3>{note.description}</h3></div>
         </div>
         </div> 
         </>

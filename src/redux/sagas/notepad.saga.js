@@ -38,12 +38,30 @@ function* deleteNote(action){
 
 }
 
+//function to send GET request of chosen note (via ID) from database, and fill the note detail reducer
+function* addNoteDetailToReducer(action){
+    try{
+        const noteDetail = yield axios.get('/user/notes/noteDetail', 
+          {params: {
+            id: action.payload
+          }
+        });
+    
+        // send response from server to reducer
+        yield put({type: 'SET_NOTE_DETAIL', payload: noteDetail.data})
+      } catch(error) {
+        console.log('Error fetching note detail', error);
+        
+      }
+}
+
 // route is /user/notepad
 
 function* addNoteToSaga(){
     yield takeEvery('ADD_NOTE_TO_NOTEPAD', addNoteToNotepad);
     yield takeEvery('FETCH_NOTES', fetchNotes);
     yield takeEvery('DELETE_NOTE', deleteNote);
+    yield takeEvery('NOTE_DETAIL', addNoteDetailToReducer);
 }
 
 export default addNoteToSaga;
