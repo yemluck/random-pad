@@ -41,16 +41,16 @@ function* deleteNote(action){
 //function to send GET request of chosen note (via ID) from database, and fill the note detail reducer
 function* addNoteDetailToReducer(action){
     try{
-        const noteDetail = yield axios.get('/user/notepad', 
+        const noteDetail = yield axios.get('/user/notes/noteDetail', 
           {params: {
             id: action.payload
           }
         });
     
         // send response from server to reducer
-        yield put({type: 'SET_DRAFT_DETAIL', payload: draftDetail.data})
+        yield put({type: 'SET_NOTE_DETAIL', payload: noteDetail.data})
       } catch(error) {
-        console.log('Error fetching draft detail', error);
+        console.log('Error fetching note detail', error);
         
       }
 }
