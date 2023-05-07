@@ -38,12 +38,18 @@ function* deleteNote(action){
 
 }
 
+//function to send GET request of chosen note (via ID) from database, and fill the note detail reducer
+function* addNoteDetailToReducer(){
+
+}
+
 // route is /user/notepad
 
 function* addNoteToSaga(){
     yield takeEvery('ADD_NOTE_TO_NOTEPAD', addNoteToNotepad);
     yield takeEvery('FETCH_NOTES', fetchNotes);
     yield takeEvery('DELETE_NOTE', deleteNote);
+    yield takeEvery('NOTE_DETAIL', addNoteDetailToReducer);
 }
 
 export default addNoteToSaga;
