@@ -22,15 +22,44 @@ console.log('note object is', note);
       },[params.id])
     
   
-  
+      // function to send noteToAdd to saga 
+      function addNoteToNotepad(){
+        dispatch({
+            type: 'ADD_NOTE_TO_NOTEPAD',
+            payload: noteToAdd
+        })
+        console.log('your note has been sent');
+        window.location.reload(false);
+        setNewDateAdded('')
+        setDescription('')
+        setHeader('')
+
+    }
     return (
         <>
         <div className="container">
             <div>
                 <div className="noteDetailColumn"> <h2><u>Date:</u></h2> <h3>{note.date}</h3> </div>
                  <div className="noteDetailColumn"> <h2><u>Header:</u></h2><h2><b>{note.header}</b></h2></div>
-                 <div className="noteDetailColumn"> <h2><u>Note:</u></h2><h3>{note.description}</h3></div>
         </div>
+        <div className="InputAndBtn">
+          <label> What Would you Like to Change about Your Entry?
+            <input
+            id="descriptionText"
+            placeholder="Your Thoughts Here"
+            value={note.description}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+            
+          />
+          </label>
+          </div>
+
+              {/* Submit button will need onClick function to send the state variables to the reducer saga */}
+        <button className="formSubmitBtn" onClick={addNoteToNotepad} >
+            <h2> Submit</h2> 
+        </button>
         </div> 
         </>
     );
