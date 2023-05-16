@@ -88,7 +88,11 @@ router.get('/notes/noteDetail', (req, res) => {
     
     // Add query to fetch drafts
     const queryText = `
-      SELECT *
+      SELECT 
+            "id",
+            TO_CHAR("date",'YYYY-MM-DD') as "date",
+            "header", 
+            "description"
       FROM
         "notepad"
       WHERE
