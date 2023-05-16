@@ -113,6 +113,32 @@ router.get('/notes/noteDetail', (req, res) => {
   })
 
 
+// put request endpoint triggered by 'UPDATE_NOTE_DETAIL' in notepadDetailPage
+router.put('/:id', (req, res) => {
+  console.log('query params are,', req.query);
+  console.log('req.body', req.body);
+  let queryText = `
+    UPDATE "notepad"
+    SET "header"=$1, "description"=$2,
+    WHERE "id"=$3 AND user_id=$4;
+
+  `
+  let queryParam = [
+    req.body.header,
+    req.body.description,
+    req.body.id,
+    req.user.id
+  ]
+
+  pool.query(queryText, queryParam)
+  .then(result => {
+    res.sendStatus(201);
+  })
+  .catch(err => {
+    console.error('ERROR in PUT request on notepad router,', err);
+    res.sendStatus(500);
+})
+});
     module.exports = router;
     
     
