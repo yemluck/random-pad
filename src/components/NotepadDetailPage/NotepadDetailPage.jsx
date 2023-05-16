@@ -11,7 +11,12 @@ function NotepadDetailPage() {
 
     //Reducers: 
     const note = useSelector(store=> store.noteDetail);
-console.log('note object is', note);
+    console.log('note object is', note);
+
+    // State Variables:
+    let [newDateAdded, setNewDateAdded] = useState('');
+    let [description, setDescription] = useState('');
+    let [header, setHeader] = useState('');
 
     // function that runs on page load 
     useEffect(() => {
@@ -41,7 +46,18 @@ console.log('note object is', note);
         <div className="container">
             <div>
                 <div className="noteDetailColumn"> <h2><u>Date:</u></h2> <h3>{note.date}</h3> </div>
-                 <div className="noteDetailColumn"> <h2><u>Header:</u></h2><h2><b>{note.header}</b></h2></div>
+                <div className="InputAndBtn">
+          <label> Edit your Header:
+            <input
+            id="headerText"
+            placeholder="Note Header"
+            value={header}
+            onChange={(e) => {
+              setHeader(e.target.value);
+            }}
+          />
+          </label>
+          </div>
         </div>
         <div className="InputAndBtn">
           <label> What Would you Like to Change about Your Entry?
@@ -57,7 +73,7 @@ console.log('note object is', note);
           </label>
           </div>
 
-            
+
               {/* Submit button will need onClick function to send the state variables to the reducer saga */}
         <button className="formSubmitBtn" onClick={addNoteToNotepad} >
             <h2> Submit</h2> 
