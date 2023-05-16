@@ -50,8 +50,8 @@ function NotepadDetailPage() {
           <label> Edit your Header:
             <input
             id="headerText"
-            placeholder="Note Header"
-            value={note.header}
+            placeholder={note.header}
+            value={header}
             onChange={(e) => {
               setHeader(e.target.value);
             }}
@@ -63,8 +63,8 @@ function NotepadDetailPage() {
           <label> What Would you Like to Change about Your Entry?
             <input
             id="descriptionText"
-            placeholder="Your Thoughts Here"
-            value={note.description}
+            placeholder={note.description}
+            value={description}
             onChange={(e) => {
               setDescription(e.target.value);
             }}
