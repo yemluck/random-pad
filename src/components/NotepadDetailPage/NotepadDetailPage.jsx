@@ -51,7 +51,7 @@ function NotepadDetailPage() {
             <input
             id="headerText"
             placeholder="Note Header"
-            value={header}
+            value={note.header}
             onChange={(e) => {
               setHeader(e.target.value);
             }}
