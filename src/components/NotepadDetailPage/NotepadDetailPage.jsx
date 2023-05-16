@@ -33,6 +33,7 @@ console.log('note object is', note);
         setNewDateAdded('')
         setDescription('')
         setHeader('')
+        history.push(`/notepad`)
 
     }
     return (
@@ -56,6 +57,7 @@ console.log('note object is', note);
           </label>
           </div>
 
+            
               {/* Submit button will need onClick function to send the state variables to the reducer saga */}
         <button className="formSubmitBtn" onClick={addNoteToNotepad} >
             <h2> Submit</h2> 
