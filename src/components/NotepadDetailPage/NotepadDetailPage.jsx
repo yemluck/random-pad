@@ -11,13 +11,12 @@ function NotepadDetailPage() {
 
     //Reducers: 
     const note = useSelector(store=> store.noteDetail);
-    console.log('note object is', note);
 
-    // State Variables:
+    // State Variables 
     let [newDateAdded, setNewDateAdded] = useState('');
     let [description, setDescription] = useState('');
     let [header, setHeader] = useState('');
-
+  
     // function that runs on page load 
     useEffect(() => {
         dispatch({
@@ -38,7 +37,7 @@ function NotepadDetailPage() {
         setNewDateAdded('')
         setDescription('')
         setHeader('')
-        history.push(`/notepad`)
+     
 
     }
     return (
@@ -51,7 +50,7 @@ function NotepadDetailPage() {
             <input
             id="headerText"
             placeholder={note.header}
-            value={header}
+            value={note.header}
             onChange={(e) => {
               setHeader(e.target.value);
             }}
@@ -66,7 +65,10 @@ function NotepadDetailPage() {
             placeholder={note.description}
             value={description}
             onChange={(e) => {
-              setDescription(e.target.value);
+              dispatch({
+                type: 'UPDATE_NOTE_DETAIL',
+                payload: {description: e.target.value}
+              });
             }}
             
           />
