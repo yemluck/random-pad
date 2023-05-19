@@ -16,7 +16,7 @@
 .gridContainer {
   display: grid;
   grid-template-columns: auto auto;
-  background-color: bisque;
+  background-color: rgb(228, 134, 217);
   padding: 20px;
   margin: 20px;
 }

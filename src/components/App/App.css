@@ -29,10 +29,10 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
+  border-color: #240c25;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #3160c7;
+  background-color: #a4289a;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -55,7 +55,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #7d8ced;
+  background-color: #f5abe8;
   text-decoration: none;
 }
 
@@ -72,8 +72,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #4566dd;
+  border-color: #c45db8;
+  color: #9d3089;
 }
 
 /* --------------------------------------------------------------------------------
