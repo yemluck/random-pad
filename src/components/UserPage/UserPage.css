@@ -12,3 +12,19 @@
 .notepadBtn{
     margin: 25px;
 }
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: bisque;
+  padding: 20px;
+  margin: 20px;
+}
+
+.gridItem {
+  background-color: azure;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}

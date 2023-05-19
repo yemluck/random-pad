@@ -14,12 +14,12 @@ function NotepadDetailPage() {
 console.log('note object is', note);
 
     // function that runs on page load 
-    useEffect(() => {
-        dispatch({
-          type: 'NOTE_DETAIL',
-          payload: Number(params.id)
-        })
-      },[params.id])
+    // useEffect(() => {
+    //     dispatch({
+    //       type: 'NOTE_DETAIL',
+    //       payload: Number(params.id)
+    //     })
+    //   },[params.id])
     
   
   
