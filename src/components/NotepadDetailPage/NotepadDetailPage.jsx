@@ -18,12 +18,12 @@ function NotepadDetailPage() {
     let [header, setHeader] = useState('');
   
     // function that runs on page load 
-    useEffect(() => {
-        dispatch({
-          type: 'NOTE_DETAIL',
-          payload: Number(params.id)
-        })
-      },[params.id])
+    // useEffect(() => {
+    //     dispatch({
+    //       type: 'NOTE_DETAIL',
+    //       payload: Number(params.id)
+    //     })
+    //   },[params.id])
     
   
       // function to send noteToAdd to saga 

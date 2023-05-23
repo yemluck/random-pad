@@ -1,14 +1,23 @@
-.notepadNavigation{
-  border: 1px solid black;
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
-  padding-bottom: 20px;
-  background-color: rgb(189, 220, 233);
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: rgb(234, 55, 213);
+  gap: 10px;
+  padding: 20px;
+  margin: 20px;
 }
 
-.notepadBtn{
-    margin: 25px;
+.gridItem {
+  background-color: azure;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.gridItem:hover {
+  background-color: transparent;
+  border-color: #c45db8;
+  color: #9d3089;
 }
