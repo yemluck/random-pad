@@ -64,10 +64,10 @@ function NotepadDetailPage() {
             id="descriptionText"
             placeholder={note.description}
             value={description}
-            onChange={(e) => {
+            onChange={(evt) => {
               dispatch({
                 type: 'UPDATE_NOTE_DETAIL',
-                payload: {description: e.target.value}
+                payload: {description: evt.target.value}
               });
             }}
             

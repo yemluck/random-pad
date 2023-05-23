@@ -62,7 +62,7 @@ function* updateNoteDetail(action){
         console.log('action.payload.id', action.payload.id);
     
         // send response from server to reducer
-        yield put({type: 'SET_NOTE_DETAIL', payload: noteDetail.data})
+        yield put({type: 'SET_NOTE_DETAIL', payload: data})
       } catch(error) {
         console.log('Error fetching note detail', error);
         

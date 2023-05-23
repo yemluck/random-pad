@@ -9,7 +9,7 @@ const userStrategy = require('../strategies/user.strategy');
 const router = express.Router();
 //Post request to save user entries from notepad into database
 router.post('/notes', rejectUnauthenticated, (req, res) => {
-      console.log('req.booty is ', req.body)
+      console.log('req.body is ', req.body)
             const insertNoteQuery = `
                                 INSERT INTO notepad (
                                     "user_id", 
