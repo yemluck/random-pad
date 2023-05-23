@@ -9,7 +9,7 @@ const userStrategy = require('../strategies/user.strategy');
 const router = express.Router();
 //Post request to save user's task entries from todopad into database
 router.post('/todo', rejectUnauthenticated, (req, res) => {
-    console.log('req.booty is ', req.body)
+    console.log('req.body is ', req.body)
           const insertNoteQuery = `
                               INSERT INTO todo_pad ( 
                                   "date_created", 

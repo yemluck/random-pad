@@ -9,7 +9,7 @@ const userStrategy = require('../strategies/user.strategy');
 const router = express.Router();
 //Post request to save user entries from notepad into database
 router.post('/notes', rejectUnauthenticated, (req, res) => {
-      console.log('req.booty is ', req.body)
+      console.log('req.body is ', req.body)
             const insertNoteQuery = `
                                 INSERT INTO notepad (
                                     "user_id", 
@@ -86,14 +86,19 @@ router.delete('/notes/:id', rejectUnauthenticated, (req, res) => {
 // router.get('/notes/noteDetail', (req, res) => {
 //     // console.log('This is the req', req.query.id);
     
-//     // Add query to fetch drafts
-//     const queryText = `
-//       SELECT *
-//       FROM
-//         "notepad"
-//       WHERE
-//         "id" = $1
-//     `;
+    // Add query to fetch drafts
+    const queryText = `
+      SELECT 
+            "id",
+            TO_CHAR("date",'YYYY-MM-DD') as "date",
+            "header", 
+            "description"
+      FROM
+        "notepad"
+      WHERE
+        "id" = $1
+    `;
+
   
 //     const queryParam = [req.query.id]
 //     pool.query(queryText, queryParam)
@@ -109,6 +114,32 @@ router.delete('/notes/:id', rejectUnauthenticated, (req, res) => {
 //   })
 
 
+// put request endpoint triggered by 'UPDATE_NOTE_DETAIL' in notepadDetailPage
+router.put('/:id', (req, res) => {
+  console.log('query params are,', req.query);
+  console.log('req.body', req.body);
+  let queryText = `
+    UPDATE "notepad"
+    SET "header"=$1, "description"=$2,
+    WHERE "id"=$3 AND user_id=$4;
+
+  `
+  let queryParam = [
+    req.body.header,
+    req.body.description,
+    req.body.id,
+    req.user.id
+  ]
+
+  pool.query(queryText, queryParam)
+  .then(result => {
+    res.sendStatus(201);
+  })
+  .catch(err => {
+    console.error('ERROR in PUT request on notepad router,', err);
+    res.sendStatus(500);
+})
+});
     module.exports = router;
     
     
