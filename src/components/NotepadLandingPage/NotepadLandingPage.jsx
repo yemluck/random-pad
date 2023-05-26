@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import NotepadContainer from './NotepadContainer';
+import NotepadContainerBox from './NotepadContainerBox';
 import './NotepadLandingPage.css';
 
 function NotepadLandingPage() {
@@ -63,7 +63,7 @@ let noteToAdd =
 
   return (
     <>
-    <NotepadContainer />
+    <NotepadContainerBox />
     <div className="formContainer">
         <h3> Start an Entry:</h3>
     <div className= "entryInput">
