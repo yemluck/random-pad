@@ -22,10 +22,12 @@ function UserPage() {
     
     const dadJokesApp = () => {
       console.log('in dadJokes app');
+      history.push('/dadJokes')
     }    
     
     const memeGeneratorApp = () => {
       console.log('in memeGenerator app');
+      history.push('/memeGenerator')
     }
 
   return (

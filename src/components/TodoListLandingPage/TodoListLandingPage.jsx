@@ -117,7 +117,8 @@ let ToDoToAdd =
         {/* Clear entry button has onClick function that clears the useState variables */}
         <button className="todoFormSubmitBtn" onClick={handleClear} >
             <h2> Clear Entry</h2>
-        </button>
+        </button><br></br>
+          <Link to='/user'><button className="todoFormSubmitBtn"> <h2>User Homepage</h2></button></Link>
 
     
     </>

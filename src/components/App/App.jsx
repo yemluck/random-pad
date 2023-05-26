@@ -22,6 +22,8 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import NotepadLandingPage from '../NotepadLandingPage/NotepadLandingPage';
 import TodoListLandingPage from '../TodoListLandingPage/TodoListLandingPage';
 import NotepadDetailPage from '../NotepadDetailPage/NotepadDetailPage';
+import DadJokesLandingPage from '../DadJokesLandingPage/DadJokesLandingPage';
+import MemeGeneratorLandingPage from '../MemeGeneratorLandingPage/MemeGeneratorLandingPage';
 import './App.css';
 
 function App() {
@@ -86,6 +88,22 @@ function App() {
             <TodoListLandingPage />
           </ProtectedRoute>
           
+          {/* Dad Jokes Landing Page */}
+           <ProtectedRoute
+            exact
+            path="/dadJokes"
+            >
+              <DadJokesLandingPage />  
+            </ProtectedRoute> 
+
+          {/* Meme Generator Landing Page */}
+          <ProtectedRoute
+            exact
+            path="/memeGenerator"
+          >
+            <MemeGeneratorLandingPage />
+          </ProtectedRoute>
+
           <Route
             exact
             path="/login"
