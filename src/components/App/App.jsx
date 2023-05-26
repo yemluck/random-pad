@@ -24,6 +24,7 @@ import TodoListLandingPage from '../TodoListLandingPage/TodoListLandingPage';
 import NotepadDetailPage from '../NotepadDetailPage/NotepadDetailPage';
 import DadJokesLandingPage from '../DadJokesLandingPage/DadJokesLandingPage';
 import MemeGeneratorLandingPage from '../MemeGeneratorLandingPage/MemeGeneratorLandingPage';
+import NotepadCreate from '../NotepadLandingPage/NotepadCreate';
 import './App.css';
 
 function App() {
@@ -77,6 +78,13 @@ function App() {
             path="/Notepad"
           >
             <NotepadLandingPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/newNote"
+          >
+            <NotepadCreate />
           </ProtectedRoute>
 
 
