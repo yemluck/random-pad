@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
+import NotepadContainer from './NotepadContainer';
 import './NotepadLandingPage.css';
 
 function NotepadLandingPage() {
@@ -62,16 +63,7 @@ let noteToAdd =
 
   return (
     <>
-    <div className="notepadIntro">
-    <h1> Notepad </h1>
-    <h2> The space for your thoughts has been awaiting your magic</h2>
-    <img 
-            src= "https://awaypoint.files.wordpress.com/2018/10/power-of-the-mind-singularity-0-poster-magic.jpg"           
-            width= {600}
-            height={450}
-            alt= "picture of your brain not loading"
-        />
-    </div>
+    <NotepadContainer />
     <div className="formContainer">
         <h3> Start an Entry:</h3>
     <div className= "entryInput">
