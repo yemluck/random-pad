@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams} from 'react-router-dom';
+import { useParams, useHistory} from 'react-router-dom';
 import './NotepadDetailPage.css';
 
 
 function NotepadDetailPage() {
     //Hooks:
     const params = useParams();
-    const dispatch = useDispatch()
+    const history = useHistory();
+    const dispatch = useDispatch();
 
     //Reducers: 
     const note = useSelector(store=> store.noteDetail);
@@ -80,6 +81,7 @@ function NotepadDetailPage() {
         <button className="formSubmitBtn" onClick={addNoteToNotepad} >
             <h2> Submit</h2> 
         </button>
+        <button onClick={()=> history.push('/notepad')}>Back</button>
         </div> 
         </>
     );

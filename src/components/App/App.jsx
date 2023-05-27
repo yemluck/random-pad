@@ -25,6 +25,7 @@ import NotepadDetailPage from '../NotepadDetailPage/NotepadDetailPage';
 import DadJokesLandingPage from '../DadJokesLandingPage/DadJokesLandingPage';
 import MemeGeneratorLandingPage from '../MemeGeneratorLandingPage/MemeGeneratorLandingPage';
 import NotepadCreate from '../NotepadLandingPage/NotepadCreate';
+import EditNotepad from '../NotepadEditPage/NotepadEditPage';
 import './App.css';
 
 function App() {
@@ -79,6 +80,23 @@ function App() {
           >
             <NotepadLandingPage />
           </ProtectedRoute>
+
+          {/* Notepad detail Page */}
+          <ProtectedRoute
+            exact
+            path="/notepad/detail/:id"
+          >
+            <NotepadDetailPage />
+          </ProtectedRoute>          
+          
+          {/* Notepad edit Page */}
+          <ProtectedRoute
+            exact
+            path="/notepad/edit/:id"
+          >
+            <EditNotepad />
+          </ProtectedRoute>
+
 
           <ProtectedRoute
             exact

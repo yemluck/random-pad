@@ -1,9 +1,21 @@
-import React, {useState, useEffect} from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import { useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
+import './NotepadContainerBox.css';
+// MUI components
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import Tooltip from '@mui/material/Tooltip';
 
 function NotepadContainerBox() {
 
+  // Hooks
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -17,48 +29,56 @@ function NotepadContainerBox() {
         });
     }, [])
 
-        //function to delete note:
+    //function to delete note:
     function handleDelete(id){
             dispatch({
                 type: 'DELETE_NOTE',
                 payload: id
             })
-    }
+    } 
+
     //function to send user to detail page where they will edit their note entry
-    function handleEdit(note){  
-      history.push(`/${note.id}`)
+    const handleEdit = (note) => {  
+      history.push(`notepad/edit/${note.id}`)
+    }
+
+    const detailNote = (note) => {
+      history.push(`/notepad/detail/${note.id}`)
     }
 
   return (
-    <div>
-      <h2> this is the container for notepad</h2>
+    <>
+    <CssBaseline />
+      <Container maxWidth="lg" height="lg"
 
-
-{/* Div to store previous notepad entries */}
-    <div>
-        <div key={noteEntry.id}>
-    {noteEntry.map(note => {
-            return(
-              <div key={note.id} >
-              <div className= "noteHistoryBox">
-                  <div className="noteHistoryLine"> <h2><u>Date:</u></h2> <h3>{note.date}</h3> </div>
-                 <div className="noteHistoryLine"> <h2><u>Header:</u></h2><h2><b>{note.header}</b></h2></div>
-                 <div className="noteHistoryLine"> <h2><u>Note:</u></h2><h3>{note.description}</h3></div>
-                 <button onClick={() => handleDelete(note.id)}>Delete</button>
-                 <button onClick= {() => handleEdit(note)}> Edit </button>
-              </div>
-             
-            </div>
-            )
-            })}
-  </div>
-
-    {/* button styling is handled in the userPage.css  */}
-    <Link to="/user"><button className="notepadBtn"> <h2>User Homepage</h2></button></Link>
-</div>
-      
-
-    </div>
+      >
+        <Box className='grid-container'  sx={{ height: '72vh', bgcolor: '#fff6fd', overflow: 'scroll', rowGap: '10px'}}
+        key={noteEntry.id}>
+          {noteEntry.map(note => {
+              return(
+                <div  key={note.id} >
+                  <Card onClick={() => detailNote(note)}
+                    className='grid-item' sx={{ width: '250px', height: '250px', overflowWrap: 'break-word', hyphens: 'manual', bgcolor:'#f3acbd', overflow: 'scroll'}}>
+                    <CardContent>
+                      <Typography> {note.date}</Typography><br></br>
+                      <Typography variant='h5' component='div'>{note.header}</Typography><br></br>
+                      <Typography variant='body2'> {note.description}</Typography>
+                    </CardContent>
+                  </Card>
+                  <center>
+                    <Tooltip title='Delete'>
+                      <DeleteForeverIcon onClick={() => handleDelete(note.id)} sx={{ marginRight: '40px' }}>Delete</DeleteForeverIcon>
+                    </Tooltip>
+                    <Tooltip title='Edit Note'>
+                      <EditNoteIcon onClick={() => handleEdit(note)}> Edit </EditNoteIcon>
+                    </Tooltip>
+                  </center>
+                </div>
+              )
+              })}
+        </Box>
+      </Container><br></br>
+    </>
   )
 }
 
