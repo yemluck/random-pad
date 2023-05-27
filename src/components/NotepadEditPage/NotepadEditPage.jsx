@@ -9,6 +9,10 @@ function EditNotepad() {
   const params = useParams();
   const history = useHistory();
 
+  // this isn't going to work yet as there's no function
+  // fetching the note
+  // Need a useEffect that dispatches a saga to fetch the note
+  // using a payload of the params.id
   const note = useSelector(store => store.noteDetail)
 
   

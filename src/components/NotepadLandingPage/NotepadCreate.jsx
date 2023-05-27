@@ -92,6 +92,7 @@ function NotepadCreate() {
         <button className="formSubmitBtn" onClick={addNoteToNotepad} >
           <h2> Submit</h2>
         </button>
+        <button onClick={() => history.push('/notepad')}> Back </button>
 
       </div>
     </>
