@@ -49,16 +49,16 @@ function NotepadContainerBox() {
   return (
     <>
     <CssBaseline />
-      <Container maxWidth="lg"
+      <Container maxWidth="lg" height="lg"
 
       >
-        <Box className='grid-container'  sx={{ minHeight: '72vh', bgcolor: '#fff6fd', overflow: 'scroll'}}
+        <Box className='grid-container'  sx={{ height: '72vh', bgcolor: '#fff6fd', overflow: 'scroll', rowGap: '10px'}}
         key={noteEntry.id}>
           {noteEntry.map(note => {
               return(
                 <div  key={note.id} >
                   <Card onClick={() => detailNote(note)}
-                  className='grid-item' sx={{width: '250px', height: '250px', overflowWrap: 'break-word', hyphens: 'manual', overflow: 'scroll'}}>
+                    className='grid-item' sx={{ width: '250px', height: '250px', overflowWrap: 'break-word', hyphens: 'manual', bgcolor:'#f3acbd', overflow: 'scroll'}}>
                     <CardContent>
                       <Typography> {note.date}</Typography><br></br>
                       <Typography variant='h5' component='div'>{note.header}</Typography><br></br>

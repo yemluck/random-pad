@@ -3,6 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import './NotepadCreate.css';
 
+// MUI components
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import CancelIcon from '@mui/icons-material/Cancel';
+import Tooltip from '@mui/material/Tooltip';
+
 function NotepadCreate() {
 
   //Hooks
@@ -15,8 +21,7 @@ function NotepadCreate() {
   let [header, setHeader] = useState('');
 
   // Create notepad and descriptions, send to reducer via dispatch
-  let noteToAdd =
-  {
+  let noteToAdd = {
     date: newDateAdded,
     header: header,
     description: description
@@ -24,78 +29,71 @@ function NotepadCreate() {
 
   // Button Functions 
   // function to send noteToAdd to saga 
-  function addNoteToNotepad() {
+  const addNoteToNotepad = (evt) => {
+    evt.preventDefault()
+
     dispatch({
       type: 'ADD_NOTE_TO_NOTEPAD',
       payload: noteToAdd
     })
     console.log('your note has been sent');
-    setNewDateAdded('')
-    setDescription('')
-    setHeader('')
+
     history.push('/Notepad')
 
-  }
+  } // end function addNoteToNotepad
 
 
 
   return(
-    <>
-     <h2> create New Note</h2>
-
-      <div className="formContainer">
-        <div className="entryInput">
-          <label> Enter The Date Here
-            <input
-              required
-              type="date"
-              name="dateEntry"
-              id="dateEntry"
-              value={newDateAdded}
-              onChange={(e) => {
-                setNewDateAdded(e.target.value);
-              }}
-            />
-          </label>
-        </div>
-        <div className="InputAndBtn">
-          <label> Set a Header for the Entry:
-            <input
-              id="headerText"
-              placeholder="Note Header"
-              required
-              value={header}
-              onChange={(e) => {
-                setHeader(e.target.value);
-              }}
-            />
-          </label>
-        </div>
-
-
-        <div className="InputAndBtn">
-          <label> What is it that You Cannot Forget?
-            <input
-              id="descriptionText"
-              placeholder="Your Thoughts Here"
-              required
-              value={description}
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-
-            />
-          </label>
-        </div>
-
-        {/* Submit button will need onClick function to send the state variables to the reducer saga */}
-        <button className="formSubmitBtn" onClick={addNoteToNotepad} >
-          <h2> Submit</h2>
-        </button>
-        <button onClick={() => history.push('/notepad')}> Back </button>
-
-      </div>
-    </>
+    <center>
+    <Box
+      component='form'
+      onSubmit={addNoteToNotepad}
+      sx={{
+        '& > :not(style)': { m: 1.2, width: '25ch',},
+        // marginLeft: "500px"
+        margin: 'auto'
+      }}
+      autoComplete='off'
+    >
+      <TextField id='standard-basic'
+        label='Title'
+        type='text'
+        required
+        value={header}
+        onChange={(e) => {setHeader(e.target.value)}}
+        variant='standard'
+      /><br></br>
+      <TextField id='standard-basic'
+        variant='standard'
+        required
+        type='date'
+        value={newDateAdded}
+        onChange={(e) => {setNewDateAdded(e.target.value)}}
+      /><br></br>
+      <TextField id='filled-multiline-static'
+        label='Note'
+        multiline
+        value={description}
+        required
+        rows={10}
+        variant='filled'
+        onChange={(e) => { setDescription(e.target.value) }}
+      /><br></br>
+        <input style={{ 
+          'background-color': '#9a287b',
+          'color' : 'white',
+          'tab-size' : '20px'
+        
+        }}
+        type='submit'
+        value="CREATE"
+      /><br></br><br></br><br></br>
+      <Tooltip title='Cancel, go back to home'>
+          <CancelIcon onClick={() => history.push('/notepad')}> Back </CancelIcon>
+      </Tooltip>
+    </Box>
+    </center>
   )
 }
 
