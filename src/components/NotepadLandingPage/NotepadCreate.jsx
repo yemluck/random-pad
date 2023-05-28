@@ -76,9 +76,9 @@ function NotepadCreate() {
         onChange={(e) => { setDescription(e.target.value) }}
       /><br></br>
         <input style={{ 
-          'background-color': '#9a287b',
+          'backgroundColor': '#9a287b',
           'color' : 'white',
-          'tab-size' : '20px'
+          'tabSize' : '20px'
         
         }}
         type='submit'
