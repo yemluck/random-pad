@@ -12,17 +12,27 @@ function* addTaskToList(action){
     }
 }
 
+//function to GET TODO lists from table via /todo
+function* fetchTodoList(){
+        let response = yield axios.get('/user/todo');
+        console.log('response from GET request is', response.data)
+    try{
+        yield put({
+            type: 'SET_TODO_LIST',
+            payload: response.data
+        })
+    } catch(error) {
+        console.log('something funky happened in the fetch todo list GET request Saga')   
+    }
 
-
-
-
-
+    }
+    
 
 // route is /user/todo
 
 function* addTaskSaga(){
     yield takeEvery('ADD_TASK', addTaskToList);
-   
+    yield takeEvery('FETCH_TODO', fetchTodoList);
 }
 
 
