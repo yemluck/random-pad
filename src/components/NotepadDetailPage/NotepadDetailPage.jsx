@@ -1,7 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory} from 'react-router-dom';
 import './NotepadDetailPage.css';
+
+// MUI components
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import CloseIcon from '@mui/icons-material/Close';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import { styled } from '@mui/material/styles';
 
 
 function NotepadDetailPage() {
@@ -10,83 +21,70 @@ function NotepadDetailPage() {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    // mui function
+    const LightTooltip = styled(({ className, ...props }) => (
+      <Tooltip {...props} classes={{ popper: className }} />
+    ))(({ theme }) => ({
+      [`& .${tooltipClasses.tooltip}`]: {
+        backgroundColor: theme.palette.common.white,
+        color: 'rgba(0, 0, 0, 0.87)',
+        boxShadow: theme.shadows[1],
+        fontSize: 15,
+      },
+    }));
+
+    // Load on page load
+    useEffect(() => {
+      dispatch({
+        type: 'GET_NOTE_DETAIL',
+        payload: params.id
+      })
+    },[params.id])
+
+
     //Reducers: 
     const note = useSelector(store=> store.noteDetail);
 
-    // State Variables 
-    let [newDateAdded, setNewDateAdded] = useState('');
-    let [description, setDescription] = useState('');
-    let [header, setHeader] = useState('');
-  
-    // function that runs on page load 
-    // useEffect(() => {
-    //     dispatch({
-    //       type: 'NOTE_DETAIL',
-    //       payload: Number(params.id)
-    //     })
-    //   },[params.id])
-    
-  
-      // function to send noteToAdd to saga 
-      function addNoteToNotepad(){
-        dispatch({
-            type: 'ADD_NOTE_TO_NOTEPAD',
-            payload: noteToAdd
-        })
-        console.log('your note has been sent');
-        window.location.reload(false);
-        setNewDateAdded('')
-        setDescription('')
-        setHeader('')
-     
+  const handleDelete = (id) => {
+    dispatch({
+      type: 'DELETE_NOTE',
+      payload: id
+    })
+    history.push('/notepad')
+  } 
 
-    }
+  
     return (
-        <>
-        <div className="container">
-            <div>
-                <div className="noteDetailColumn"> <h2><u>Date:</u></h2> <h3>{note.date}</h3> </div>
-                <div className="InputAndBtn">
-          <label> Edit your Header:
-            <input
-            id="headerText"
-            placeholder={note.header}
-            value={note.header}
-            onChange={(e) => {
-              setHeader(e.target.value);
-            }}
-          />
-          </label>
-          </div>
-        </div>
-        <div className="InputAndBtn">
-          <label> What Would you Like to Change about Your Entry?
-            <input
-            id="descriptionText"
-            placeholder={note.description}
-            value={description}
-            onChange={(evt) => {
-              dispatch({
-                type: 'UPDATE_NOTE_DETAIL',
-                payload: {description: evt.target.value}
-              });
-            }}
-            
-          />
-          </label>
-          </div>
-
-
-              {/* Submit button will need onClick function to send the state variables to the reducer saga */}
-        <button className="formSubmitBtn" onClick={addNoteToNotepad} >
-            <h2> Submit</h2> 
-        </button>
-        <button onClick={()=> history.push('/notepad')}>Back</button>
-        </div> 
-        </>
+      <div className="detailBox">
+        <Card>
+          <CardContent>
+            <Typography sx={{fontSize: 14}} color='text.secondary' gutterBottom>
+              <u>{note.date}</u>
+            </Typography>
+            <Typography variant="h4" component='div'>
+              {note.header}
+            </Typography><br></br><br></br>
+            <Typography variant="body" sx={{ maxWidth: '600px', overflowWrap: 'break-word' }}>
+              {note.description}
+            </Typography><br></br>
+          </CardContent>
+            <br></br>
+            <div  style={{float: 'right'}}>
+            <LightTooltip title='Edit note'>
+              <EditNoteIcon fontSize='large' sx={{ paddingRight: '20px', color: '#9a287b' }} onClick={() => history.push(`/notepad/edit/${params.id}`)}>Edit</EditNoteIcon>
+            </LightTooltip>
+            <LightTooltip title='Delete Note'>
+              <DeleteForeverIcon onClick={()=> handleDelete(note.id)} fontSize="large" sx={{ paddingRight: '20px', color: '#9a287b' }}> Delete </DeleteForeverIcon>
+            </LightTooltip>
+            <LightTooltip title='Return to Note list' sx={{color: 'red'}}>
+              <CloseIcon fontSize="large" sx={{ paddingRight: '10px', color: '#9a287b' }} onClick={() => history.push('/notepad')}> Close </CloseIcon>
+            </LightTooltip>
+            </div>
+        </Card>
+        
+      </div>
     );
   }
   
-  // this allows us to use <App /> in index.js
   export default NotepadDetailPage;
   

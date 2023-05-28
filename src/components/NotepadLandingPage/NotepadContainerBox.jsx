@@ -11,13 +11,26 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
-import Tooltip from '@mui/material/Tooltip';
+import Tooltip, {tooltipClasses} from '@mui/material/Tooltip';
+import {styled} from '@mui/material/styles';
 
 function NotepadContainerBox() {
 
   // Hooks
   const dispatch = useDispatch();
   const history = useHistory();
+
+  // mui function
+  const LightTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: theme.palette.common.white,
+      color: 'rgba(0, 0, 0, 0.87)',
+      boxShadow: theme.shadows[1],
+      fontSize: 15,
+    },
+  }));
 
   // Reducers
   const noteEntry = useSelector(store=> store.notepad);
@@ -66,12 +79,12 @@ function NotepadContainerBox() {
                     </CardContent>
                   </Card>
                   <center>
-                    <Tooltip title='Delete'>
-                      <DeleteForeverIcon onClick={() => handleDelete(note.id)} sx={{ marginRight: '40px' }}>Delete</DeleteForeverIcon>
-                    </Tooltip>
-                    <Tooltip title='Edit Note'>
-                      <EditNoteIcon onClick={() => handleEdit(note)}> Edit </EditNoteIcon>
-                    </Tooltip>
+                    <LightTooltip title='Delete'>
+                      <DeleteForeverIcon fontSize='medium' onClick={() => handleDelete(note.id)} sx={{ marginRight: '40px' }}>Delete</DeleteForeverIcon>
+                    </LightTooltip>
+                    <LightTooltip title='Edit Note'>
+                      <EditNoteIcon fontSize='medium' onClick={() => handleEdit(note)}> Edit </EditNoteIcon>
+                    </LightTooltip>
                   </center>
                 </div>
               )
