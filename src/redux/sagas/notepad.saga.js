@@ -57,14 +57,12 @@ function* fetchNoteDetail(action){
 //function to trigger PUT request to update note detail
 function* updateNoteDetail(action){
     try{
-        yield axios.put(`/user/notes/noteDetail/${action.payload}`, action.payload), 
+        yield axios.put(`/user/notes/noteDetail/${action.payload.id}`, action.payload), 
         console.log('action.payload.id', action.payload.id);
     
         // send response from server to reducer
-        yield put({type: 'SET_NOTE_DETAIL', payload: data})
       } catch(error) {
         console.log('Error fetching note detail', error);
-        
       }
 }
 
@@ -75,7 +73,7 @@ function* addNoteToSaga(){
     yield takeEvery('FETCH_NOTES', fetchNotes);
     yield takeEvery('DELETE_NOTE', deleteNote);
     yield takeEvery('GET_NOTE_DETAIL', fetchNoteDetail);
-    yield takeEvery('UPDATE_NOTE_DETAIL', updateNoteDetail);
+    yield takeEvery('UPDATE_NOTE_CHANGES', updateNoteDetail);
 }
 
 export default addNoteToSaga;

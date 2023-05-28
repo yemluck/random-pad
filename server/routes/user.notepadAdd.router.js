@@ -112,20 +112,22 @@ router.get('/notes/noteDetail', (req, res) => {
 
 
 // put request endpoint triggered by 'UPDATE_NOTE_DETAIL' in notepadDetailPage
-router.put('/:id', (req, res) => {
-  console.log('query params are,', req.query);
-  console.log('req.body', req.body);
+router.put('/notes/noteDetail/:id', (req, res) => {
   let queryText = `
-    UPDATE "notepad"
-    SET "header"=$1, "description"=$2,
-    WHERE "id"=$3 AND user_id=$4;
-
+    UPDATE 
+      "notepad"
+    SET 
+      "header"= $1, 
+      "description"= $2,
+      "date" = $3
+    WHERE 
+      "id"=$4
   `
   let queryParam = [
     req.body.header,
     req.body.description,
-    req.body.id,
-    req.user.id
+    req.body.date,
+    req.body.id
   ]
 
   pool.query(queryText, queryParam)
