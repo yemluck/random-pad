@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import './TodoListLandingPage.css';
-
+import TodoContainerBox from './TodoContainerBox';
 
 function TodoListLandingPage() {
 
@@ -16,7 +16,7 @@ function TodoListLandingPage() {
     let [task, setTask] = useState('');
     let [status, setStatus] = useState('');
 
-// Create notepad and descriptions, send to reducer via dispatch
+// Create todo and descriptions, send to reducer via dispatch
 let ToDoToAdd = 
 {
     date_created: date,
@@ -65,6 +65,7 @@ let ToDoToAdd =
             className="todoImg"
         />
     </div>
+    <TodoContainerBox/>
     <div className= "todoList formContainer">
    
         <h2> Start Your Task Entry Here:</h2>

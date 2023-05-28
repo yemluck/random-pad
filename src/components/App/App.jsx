@@ -114,6 +114,14 @@ function App() {
             <TodoListLandingPage />
           </ProtectedRoute>
           
+           {/* Todo List History Page */}
+           <ProtectedRoute
+            exact
+            path="/todoList"
+          >
+            <TodoListLandingPage />
+          </ProtectedRoute>
+
           {/* Dad Jokes Landing Page */}
            <ProtectedRoute
             exact

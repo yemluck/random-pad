@@ -8,7 +8,7 @@ const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
 
-//get request to retrieve todo list entries and display on notepad homepage
+//GET request to retrieve todo list entries and display on notepad homepage
 //Triggered in todo.saga via "FETCH_TODO", triggered on page load @ todoContainer
 router.get('/todo', rejectUnauthenticated, (req, res) => {
     const queryText = 
