@@ -49,6 +49,8 @@ router.post('/notes', rejectUnauthenticated, (req, res) => {
                                 "notepad"
                             WHERE
                                 "user_id" = $1
+                            ORDER BY
+                                 "id" DESC
                             `
         const queryParam = [req.user.id]
         pool.query(queryText, queryParam)
