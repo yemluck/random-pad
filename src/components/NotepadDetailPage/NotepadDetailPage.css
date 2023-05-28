@@ -1,0 +1,13 @@
+.detailBox {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 700px;
+  max-height: 800px;
+  padding: 25px;
+  margin: 0 auto 20px;
+  background-color: #9a287b;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(191, 163, 163, 0.4);
+  position: relative;
+  transform: translateX(0%) translateY(30%);
+}

@@ -16,21 +16,23 @@ function NotepadCreate() {
   const history = useHistory();
 
   // State Variables 
-  let [newDateAdded, setNewDateAdded] = useState('');
   let [description, setDescription] = useState('');
   let [header, setHeader] = useState('');
 
   // Create notepad and descriptions, send to reducer via dispatch
   let noteToAdd = {
-    date: newDateAdded,
+    date: new Date().toDateString(),
     header: header,
     description: description
   }
+
+
 
   // Button Functions 
   // function to send noteToAdd to saga 
   const addNoteToNotepad = (evt) => {
     evt.preventDefault()
+
 
     dispatch({
       type: 'ADD_NOTE_TO_NOTEPAD',
@@ -63,13 +65,6 @@ function NotepadCreate() {
         value={header}
         onChange={(e) => {setHeader(e.target.value)}}
         variant='standard'
-      /><br></br>
-      <TextField id='standard-basic'
-        variant='standard'
-        required
-        type='date'
-        value={newDateAdded}
-        onChange={(e) => {setNewDateAdded(e.target.value)}}
       /><br></br>
       <TextField id='filled-multiline-static'
         label='Note'
