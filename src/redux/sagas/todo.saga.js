@@ -12,6 +12,17 @@ function* addTaskToList(action){
     }
 }
 
+//function to GET TODO lists from table via /todo
+function* fetchTodoList(){
+        let response = yield axios.get('/user/todo');
+       
+        yield put({
+            type: 'SET_TODO_REDUCER',
+            payload: response.data
+        })
+    }
+    
+}
 
 
 
@@ -22,7 +33,7 @@ function* addTaskToList(action){
 
 function* addTaskSaga(){
     yield takeEvery('ADD_TASK', addTaskToList);
-   
+    yield takeEvery('FETCH_TODO', fetchTodoList);
 }
 
 
