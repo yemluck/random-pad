@@ -28,12 +28,6 @@ function* fetchTodoList(){
     }
     
 
-
-
-
-
-
-
 // route is /user/todo
 
 function* addTaskSaga(){

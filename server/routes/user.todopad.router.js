@@ -11,6 +11,7 @@ const router = express.Router();
 //GET request to retrieve todo list entries and display on notepad homepage
 //Triggered in todo.saga via "FETCH_TODO", triggered on page load @ todoContainer
 router.get('/todo', rejectUnauthenticated, (req, res) => {
+   console.log('req.body is', req.body);
     const queryText = 
                         `SELECT 
                             "id",
@@ -30,7 +31,7 @@ router.get('/todo', rejectUnauthenticated, (req, res) => {
     .then(dbRes => {
         res.send(dbRes.rows)
     }).catch(err => {
-        console.log('error on the get notes from todopad.router', err)
+        console.log('error on the get todo from todopad.router', err)
         res.sendStatus(500);
     })
 });
