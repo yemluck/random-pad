@@ -9,7 +9,7 @@ function TodoListLandingPage() {
  // Hooks 
     const dispatch = useDispatch();
 // Reducers 
-   
+ 
 // State Variables 
     let [date, setDate] = useState('');
     let [priority, setPriority] = useState('');
@@ -66,6 +66,7 @@ let ToDoToAdd =
         />
     </div>
     <TodoContainerBox/>
+
     <div className= "todoList formContainer">
    
         <h2> Start Your Task Entry Here:</h2>

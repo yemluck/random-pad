@@ -11,8 +11,9 @@ function TodoContainerBox() {
 
 
   // Reducers
-  const task = useSelector(store=> store.todoList);
+  const task = useSelector(store=> store.todopad);
   console.log('task is', task);
+  
   // Page Load Functions:
     useEffect(()=> {
         dispatch({

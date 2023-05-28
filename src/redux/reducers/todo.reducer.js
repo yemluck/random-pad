@@ -6,7 +6,7 @@ const todoList = (state=[], action) => {
         default:
             return state;
     }
-  }; // End notepad reducer
+  }; // End todoList reducer
 
 export default todoList;
   
