@@ -26,6 +26,7 @@ import DadJokesLandingPage from '../DadJokesLandingPage/DadJokesLandingPage';
 import MemeGeneratorLandingPage from '../MemeGeneratorLandingPage/MemeGeneratorLandingPage';
 import NotepadCreate from '../NotepadLandingPage/NotepadCreate';
 import EditNotepad from '../NotepadEditPage/NotepadEditPage';
+import FavoriteMeme from '../MemeGeneratorLandingPage/FavoriteMeme';
 import './App.css';
 
 function App() {
@@ -136,6 +137,14 @@ function App() {
             path="/memeGenerator"
           >
             <MemeGeneratorLandingPage />
+          </ProtectedRoute>
+
+          {/* Saved Favorite Meme */}
+          <ProtectedRoute
+            exact
+            path='/favoriteMeme'
+          >
+            <FavoriteMeme />
           </ProtectedRoute>
 
           <Route
