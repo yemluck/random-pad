@@ -17,7 +17,7 @@ router.get('/meme', rejectUnauthenticated, (req, res) => {
     url: 'https://api.giphy.com/v1/gifs/trending',
     params: {
       api_key: process.env.GIPHY_API_KEY,
-      limit: 2
+      limit: 1
     }
   })
   .then((apiRes) => {
