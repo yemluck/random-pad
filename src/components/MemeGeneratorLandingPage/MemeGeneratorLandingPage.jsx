@@ -17,8 +17,6 @@ function MemeGeneratorLandingPage () {
     //   })
     // }, [])
 
-    //console.log('this is the meme object from store', meme['data'][0].url);
-    console.log('this is the meme.data', meme.data);
 
     // function to run on click of generate new meme
     const getRandomMeme = () => {
