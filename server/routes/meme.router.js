@@ -14,7 +14,7 @@ const router = express.Router();
 router.get('/meme', rejectUnauthenticated, (req, res) => {
   axios({
     method: 'GET',
-    url: 'https://api.giphy.com/v1/gifs/trending',
+    url: 'https://api.giphy.com/v1/gifs/random',
     params: {
       api_key: process.env.GIPHY_API_KEY,
       limit: 1

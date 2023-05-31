@@ -10,17 +10,15 @@ function MemeGeneratorLandingPage () {
   const dispatch = useDispatch();
   const meme = useSelector(store => store.meme)
 
-
-
-
   // on page load, dispatch call to fetch random meme
-    useEffect(() => {
-      dispatch({
-        type: 'GET_MEME'
-      })
-    }, [])
+    // useEffect(() => {
+    //   dispatch({
+    //     type: 'GET_MEME'
+    //   })
+    // }, [])
 
     //console.log('this is the meme object from store', meme['data'][0].url);
+    console.log('this is the meme.data', meme.data);
 
     // function to run on click of generate new meme
     const getRandomMeme = () => {
@@ -48,7 +46,14 @@ function MemeGeneratorLandingPage () {
       </marquee>
       <div className='gridParent'>
         <div className='gridChild image'>
-          {/* <img className='imageDiv' src='' alt='Meme here' height='500px' width='500px' /> */}
+          {
+            meme['data'] ? <img src={meme['data']['images']['original']['url']}
+              height={500}
+              width={500}
+            
+            />: 
+            <img src='memeGenerator.png' alt='random meme'/>
+          }
         </div>
         <div className='gridChild button'>
           <button className='btn1' onClick={getRandomMeme}>Generate New Meme</button><br></br>
