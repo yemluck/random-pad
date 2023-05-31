@@ -1,0 +1,30 @@
+.gridParent {
+  display: inline-grid;
+  grid-template-columns: 700px 300px ;
+  background-color: whitesmoke;
+  padding: 15px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-color: blue;
+  border: 2px solid #9a287b;
+}
+
+.gridChild {
+  padding: 10px;
+  border: 5px solid #9a287b
+}
+
+.btn1 {
+  margin-bottom: 70px;
+  margin-top: 80px;
+}
+
+.btn2 {
+  margin-top: 70px;
+  margin-bottom: 40px;
+}
+
+.btn3 {
+  margin-top: 90px;
+  margin-bottom: 80px;
+}
