@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const notepadAddRouter = require('./routes/user.notepadAdd.router');
 const todopadRouter = require('./routes/user.todopad.router');
+const memeRouter = require('./routes/meme.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,6 +28,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/user', notepadAddRouter);
 app.use('/user', todopadRouter);
+app.use('/user', memeRouter);
 
 // Serve static files
 app.use(express.static('build'));
